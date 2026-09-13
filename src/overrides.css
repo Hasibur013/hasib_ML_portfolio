@@ -180,6 +180,17 @@
   margin-top: 0.25rem;
 }
 
+.hero {
+  padding-top: 104px;
+  padding-bottom: 0;
+}
+
+.hero .container.hero-shell,
+.hero .hero-shell {
+  padding-top: 8px;
+  padding-bottom: 36px;
+}
+
 /* Homepage/about sections lost vertical padding in the compiled CSS cascade. */
 .section > .container {
   padding-top: 88px;
@@ -388,10 +399,60 @@ main#main-content > .section:first-child > .container,
   }
 }
 
+.floating-dock {
+  display: flex;
+  z-index: 1100;
+}
+
+.footer {
+  padding-bottom: 120px;
+}
+
+.back-to-top-btn {
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 900px) {
+  .about-section-compact .about-compact {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-section-compact .about-compact-actions,
+  .about-section-compact .about-compact-copy .section-label {
+    justify-content: center;
+  }
+
+  .about-achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-card-grid,
+  .skills-container,
+  .skills-container.is-compact,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    padding-top: 88px;
+  }
+
+  .hero .container.hero-shell,
+  .hero .hero-shell {
+    padding-top: 4px;
+    padding-bottom: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  }
+
   .section > .container {
     padding-top: 64px;
-    padding-bottom: 64px;
+    padding-bottom: 72px;
   }
 
   main#main-content > .section:first-child > .container,
@@ -403,5 +464,54 @@ main#main-content > .section:first-child > .container,
   .navbar-links.open,
   .navbar-links.is-open {
     display: flex;
+  }
+
+  .navbar-inner {
+    gap: 8px;
+  }
+
+  .navbar-name {
+    max-width: 42vw;
+  }
+
+  .floating-dock,
+  .floating-dock.is-visible {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%);
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    gap: 2px;
+    width: max-content;
+    max-width: calc(100vw - 16px);
+    padding: 6px;
+  }
+
+  .floating-dock a {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+  .identity-wrap {
+    padding-top: 36px;
+  }
+
+  .footer {
+    padding-bottom: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-dock a {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 12px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
   }
 }

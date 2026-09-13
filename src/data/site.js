@@ -27,7 +27,7 @@ export const profile = {
     "AI Systems Builder",
   ],
   subtitle:
-    "I build production computer vision, OCR, and AI systems—from data annotation and model training through FastAPI services and real-world deployment. I work on Bondstein’s industrial CV stack and publish applied research in healthcare IoT and security.",
+    "I am a Junior Machine Learning Engineer focused on computer vision, OCR, and applied AI. I work through the full path from data annotation and model training to APIs and deployment, and I publish research in healthcare IoT and security.",
   badge: "Available for AI/ML & Computer Vision opportunities",
   footerBlurb:
     "Junior Machine Learning Engineer building computer vision, OCR, and applied AI systems. Open to collaborations and opportunities.",
@@ -36,12 +36,12 @@ export const profile = {
 };
 
 export const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/skills", label: "Skills" },
-  { to: "/projects", label: "Projects" },
-  { to: "/research", label: "Research" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", icon: "home" },
+  { to: "/about", label: "About", icon: "user" },
+  { to: "/skills", label: "Skills", icon: "stack" },
+  { to: "/projects", label: "Projects", icon: "repo" },
+  { to: "/research", label: "Research", icon: "book" },
+  { to: "/contact", label: "Contact", icon: "mail" },
 ];
 
 export const cvs = [{ href: "/cv/Md_Hasibur_Rahman_Resume.pdf", label: "Download Resume", icon: "file" }];
@@ -300,28 +300,28 @@ export const skillGroups = [
 
 export const aboutAchievements = [
   {
-    title: "Bondstein production CV team",
-    text: "Contributed to 10+ production computer-vision systems for Unilever, BAT, KDS, BRAC Bank, Mobil, and Runner — from annotation through model work and deployment support.",
+    title: "Industry computer vision",
+    text: "On Bondstein’s R&D team I support production CV systems for safety, logistics, banking, manufacturing, and retail—annotation, OCR, detection, and model integration.",
   },
   {
-    title: "Bangla PaddleOCR fine-tuning",
-    text: "Fine-tuned PaddleOCR for Bangla language support used in ANPR and industrial OCR pipelines.",
+    title: "Bangla OCR research",
+    text: "Fine-tuned PaddleOCR for Bangla language support used in ANPR and industrial text-recognition pipelines.",
   },
   {
-    title: "IEEE SMC 2025 publication",
-    text: "Co-authored PRALEIT, a priority-aware task-offloading framework for healthcare IoT, presented in Vienna.",
+    title: "Peer-reviewed research",
+    text: "Co-authored PRALEIT (IEEE SMC 2025, Vienna) on healthcare IoT task offloading, and PhishGuard (STI 2024) for ensemble phishing detection.",
   },
   {
-    title: "Academic distinction",
-    text: "CGPA 3.95/4.00 with eight Vice-Chancellor awards, one Dean award, and a best-project award for Online Medical Sheba.",
+    title: "Academic record",
+    text: "BSc CSE from Green University of Bangladesh, CGPA 3.95/4.00, eight Vice-Chancellor awards, one Dean award, and Best Project for Online Medical Sheba.",
   },
 ];
 
 export const aboutCapabilities = [
-  "Computer vision: detection, segmentation, OCR, and image/video processing",
-  "Dataset annotation in Roboflow and PaddleOCR fine-tuning for Bangla",
-  "Model training with PyTorch, Lightning, and MLflow experiment tracking",
-  "API and agent systems with FastAPI, LLMs, and Azure deployment",
+  "Computer vision: object detection, segmentation, OCR, and image/video processing",
+  "Dataset work in Roboflow and PaddleOCR fine-tuning, including Bangla",
+  "Model training and tracking with PyTorch, MLflow, and careful evaluation",
+  "Services and agents with Python, FastAPI, LLMs, and Azure VM deployment",
 ];
 
 export const socials = [

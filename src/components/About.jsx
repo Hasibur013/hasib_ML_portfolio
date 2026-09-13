@@ -21,15 +21,16 @@ export function AboutCompact() {
             <span className="section-label">
               <Icon name="user" /> About
             </span>
-            <h2 className="section-title">Building computer vision and applied AI that ships</h2>
+            <h2 className="section-title">ML engineer building computer vision that holds up in the real world</h2>
             <p>
-              I’m a Junior Machine Learning Engineer at Bondstein Technologies. I work on computer vision, OCR,
-              annotation, and model development for industrial systems—from Roboflow datasets and PaddleOCR
-              fine-tuning through detection, segmentation, and image/video pipelines.
+              I am Md. Hasibur Rahman, a Junior Machine Learning Engineer at Bondstein Technologies. I care
+              about the full path of a vision system: clean data, a model that generalizes, and a service that
+              operators can trust.
             </p>
             <p>
-              I also publish applied research in healthcare IoT task offloading and phishing detection, and I
-              keep a set of personal ML, healthcare, and analytics projects alongside the team case studies.
+              My work sits in computer vision, OCR, and applied AI—from Roboflow annotation and Bangla
+              PaddleOCR fine-tuning to detection, segmentation, and image/video pipelines on industrial
+              deployments.
             </p>
             <div className="about-compact-actions">
               <Link to="/about" className="btn btn-primary">
@@ -55,8 +56,8 @@ export default function About() {
             <p className="about-role">{profile.cardRole}</p>
             <p className="about-specialty">{profile.specialty}</p>
             <p className="about-identity-summary">
-              Dedicated ML engineer focused on computer vision, data annotation, and model optimization—building
-              impactful, scalable AI systems.
+              Dedicated ML engineer. Deep learning, data annotation, and model optimization—with a bias toward
+              systems that can scale beyond a notebook.
             </p>
             <ul className="about-identity-facts">
               <li>
@@ -72,17 +73,25 @@ export default function About() {
             <span className="section-label">
               <Icon name="user" /> About me
             </span>
-            <h2 className="section-title">Junior Machine Learning Engineer working on computer vision, OCR, and applied AI.</h2>
+            <h2 className="section-title">I turn messy visual data into models and services people can use.</h2>
             <p>
-              At Bondstein I contribute to production vision systems for safety, security, logistics, retail,
-              and manufacturing. My path there ran intern → annotator → junior engineer: Roboflow labeling,
-              PaddleOCR research and Bangla fine-tuning, then detection, segmentation, and image/video work on
-              the industrial stack.
+              I am a Junior Machine Learning Engineer in Bondstein’s R&D team in Tejgaon. I joined as an ML
+              intern, moved into data annotation, and now work as a junior engineer on computer vision: object
+              detection, segmentation, OCR, and image/video processing. A large part of that path was
+              Roboflow labeling and PaddleOCR research, including Bangla fine-tuning that feeds ANPR and
+              industrial OCR.
             </p>
             <p>
-              Before and alongside that, I built FastAPI and LLM-agent services at ROHUM, taught structured
-              programming as a TA, and completed a BSc in CSE at Green University of Bangladesh with a 3.95
-              CGPA. My research covers healthcare IoT offloading and ensemble phishing detection.
+              In parallel I interned remotely as an AI engineer at ROHUM (Turkey), building FastAPI services,
+              LLM agents, and a deployment on Azure. I completed a BSc in CSE at Green University of Bangladesh
+              (CGPA 3.95/4.00), taught C as a teaching assistant, and still keep personal projects in
+              classification, healthcare apps, and analytics.
+            </p>
+            <p>
+              I publish when the work is solid enough to defend. PRALEIT (IEEE SMC 2025, Vienna) studies
+              priority-aware task offloading for healthcare IoT. PhishGuard (STI 2024) is a multi-layered
+              ensemble for phishing-website detection. That habit—measure, compare, write it down—is how I
+              treat production models too.
             </p>
           </div>
         </div>
@@ -120,22 +129,22 @@ export default function About() {
 
         <div className="about-method-grid">
           <article className="about-method-card">
-            <h3>How I build</h3>
-            <p>Reliable delivery, end to end</p>
+            <h3>How I work</h3>
+            <p>From dataset to a service someone can run</p>
             <ul className="about-build-list">
-              <li>Collect, label, audit, and version representative datasets.</li>
-              <li>Train, validate, and analyze failure modes against strong baselines.</li>
-              <li>Connect inference to tracking, decision logic, APIs, and evidence.</li>
-              <li>Ship models and services with FastAPI, monitoring, and cloud or edge targets.</li>
+              <li>Collect, annotate, and version data that actually matches the site.</li>
+              <li>Train and compare models, then inspect the cases that fail.</li>
+              <li>Connect inference to APIs, rules, and the rest of the product.</li>
+              <li>Deploy with FastAPI, cloud VMs, or the team’s edge stack when needed.</li>
             </ul>
           </article>
           <article className="about-method-card">
-            <h3>Research foundation</h3>
-            <p>Evaluation grounded in evidence</p>
+            <h3>Research</h3>
+            <p>Write it so another engineer can reproduce the claim</p>
             <p>
-              My published work includes PRALEIT, a priority-aware task-offloading framework for healthcare IoT
-              (IEEE SMC 2025), and PhishGuard, a multi-layered ensemble for phishing-website detection (STI 2024).
-              That research discipline shapes how I evaluate models and communicate results.
+              PRALEIT is a priority-aware offloading framework for healthcare IoT, presented at IEEE SMC 2025
+              in Vienna. PhishGuard is a stacked ensemble for phishing-website detection, presented at STI 2024
+              in Dhaka. I use the same standard on industry work: a number without a setup is not a result.
             </p>
             <div className="about-research-links">
               <a href="https://doi.org/10.1109/SMC58881.2025.11343197" target="_blank" rel="noreferrer">
