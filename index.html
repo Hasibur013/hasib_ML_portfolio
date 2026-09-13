@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>Md. Hasibur Rahman | Machine Learning Engineer</title>
+    <meta
+      name="description"
+      content="Junior Machine Learning Engineer specializing in computer vision, OCR, data annotation, and applied AI, with peer-reviewed research in healthcare IoT and phishing detection."
+    />
+    <meta name="author" content="Md. Hasibur Rahman" />
+    <link rel="canonical" href="https://hasibur013.github.io/" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0d1117" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme !== "light" && theme !== "dark") {
+            theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.style.colorScheme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", theme === "light" ? "#f6f5fb" : "#0d1117");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+
+    <meta property="og:site_name" content="Md. Hasibur Rahman" />
+    <meta property="og:title" content="Md. Hasibur Rahman | Machine Learning Engineer" />
+    <meta
+      property="og:description"
+      content="Computer vision, OCR, Edge AI, and applied ML research from annotation through deployment."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Md. Hasibur Rahman | Machine Learning Engineer" />
+    <meta name="twitter:description" content="Computer vision, OCR, Edge AI, and applied ML research." />
+    <meta name="twitter:image" content="/assets/og-cover.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif; color: #f0f6fc; background: #0d1117">
+        This portfolio needs JavaScript enabled. You can also reach me at
+        <a href="mailto:mlengr.hasibur@gmail.com" style="color: #58a6ff">mlengr.hasibur@gmail.com</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
