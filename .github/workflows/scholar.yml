@@ -25,7 +25,11 @@ jobs:
           python-version: "3.11"
 
       - name: Install scholarly
-        run: pip install scholarly "bibtexparser<2"
+        run: |
+          pip install "bibtexparser==1.4.1"
+          pip install scholarly
+          pip install --force-reinstall "bibtexparser==1.4.1"
+          python -c "from bibtexparser.bibdatabase import BibDatabase; import scholarly; print('scholarly deps ok')"
 
       - name: Fetch Scholar stats
         env:
