@@ -2,7 +2,7 @@ export const profile = {
   name: "Md. Hasibur Rahman",
   shortName: "Hasibur Rahman",
   initials: "HR",
-  tagline: "AI/ML Engineer · CV, OCR, Edge AI, Automation & Analytics",
+  tagline: "AI/ML Engineer · CV · OCR · Edge AI · Analytics",
   role: "AI/ML Engineer — Computer Vision, OCR, Face Recognition, Edge AI & Analytics",
   cardRole: "AI/ML Engineer",
   specialty: "CV · OCR · FRS · Analytics",
