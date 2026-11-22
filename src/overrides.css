@@ -106,10 +106,12 @@ body {
 .stack-tabs {
   position: relative;
   z-index: 2;
-  width: min(100% - 48px, 1180px);
-  margin: 18px auto 32px;
+  width: min(100% - 48px, 1200px);
+  margin: 18px auto 28px;
   display: grid;
   gap: 14px;
+  box-sizing: border-box;
+  padding-inline: 0;
 }
 
 .stack-tablist {
@@ -227,7 +229,7 @@ body {
 
 @media (max-width: 768px) {
   .stack-tabs {
-    width: min(100% - 32px, 1180px);
+    width: min(100%, 1200px);
     margin: 14px auto 24px;
   }
 
@@ -725,15 +727,50 @@ body {
   padding-bottom: 88px;
 }
 
-/* Must come after the general rule above or 88px wins (same specificity). */
-main#main-content > .impact-strip-section > .container,
-main#main-content > .cv-workflow-section > .container {
-  padding-top: 36px;
-  padding-bottom: 36px;
+/* Home page: tighter gaps + consistent left alignment */
+.home-page > .section > .container {
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
-main#main-content > .cv-workflow-section + .section > .container {
-  padding-top: 48px;
+.home-page > .impact-strip-section > .container,
+.home-page > .cv-workflow-section > .container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.home-page > .section .section-header {
+  text-align: left;
+  margin-bottom: 24px;
+  max-width: none;
+}
+
+.home-page > .section .section-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 680px;
+}
+
+.home-page > .section .section-cta {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.home-page .hero .container.hero-shell,
+.home-page .hero .hero-shell {
+  max-width: 1200px;
+  width: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  padding-inline: 24px;
+  box-sizing: border-box;
+}
+
+.home-page .stack-tabs {
+  width: min(100%, 1200px);
+  padding-inline: 24px;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 main#main-content > .section:first-child > .container,
@@ -1225,14 +1262,19 @@ main#main-content > .section:first-child > .container,
     font-size: clamp(2.1rem, 10vw, 2.8rem);
   }
 
-  main#main-content > .impact-strip-section > .container,
-  main#main-content > .cv-workflow-section > .container {
-    padding-top: 28px;
-    padding-bottom: 28px;
+  .home-page > .section > .container {
+    padding-top: 36px;
+    padding-bottom: 40px;
   }
 
-  main#main-content > .cv-workflow-section + .section > .container {
-    padding-top: 36px;
+  .home-page > .impact-strip-section > .container,
+  .home-page > .cv-workflow-section > .container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .home-page .stack-tabs {
+    padding-inline: 16px;
   }
 
   .section > .container {

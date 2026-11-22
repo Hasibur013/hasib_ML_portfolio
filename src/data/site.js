@@ -77,12 +77,12 @@ export const heroStats = [
 /** Team-program scale from Bondstein CV deployments you contributed to. */
 export const impactMetrics = [
   {
-    value: "1,500+",
+    value: "1,000+",
     description: "Live camera feeds aligned across enterprise programs I contributed to",
     label: "deployment scale",
   },
   {
-    value: "700+",
+    value: "500+",
     description: "Locations represented across banking and industrial operations",
     label: "multi-site delivery",
   },
