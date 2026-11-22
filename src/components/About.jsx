@@ -129,12 +129,19 @@ export default function About() {
           <article className="about-method-card">
             <h3>How I work</h3>
             <p>From dataset to a service someone can run</p>
-            <ul className="about-build-list">
-              <li>Collect, annotate, and version data that actually matches the site.</li>
-              <li>Train and compare models, then inspect the cases that fail.</li>
-              <li>Connect inference to APIs, rules, and the rest of the product.</li>
-              <li>Deploy with FastAPI, cloud VMs, or the team’s edge stack when needed.</li>
-            </ul>
+            <ol className="about-build-list">
+              {[
+                "Collect, annotate, and version data that actually matches the site.",
+                "Train and compare models, then inspect the cases that fail.",
+                "Connect inference to APIs, rules, and the rest of the product.",
+                "Deploy with FastAPI, cloud VMs, or the team’s edge stack when needed.",
+              ].map((step, index) => (
+                <li key={step}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{step}</p>
+                </li>
+              ))}
+            </ol>
           </article>
           <article className="about-method-card">
             <h3>Research</h3>
@@ -155,16 +162,18 @@ export default function About() {
           </article>
         </div>
 
-        <div className="about-block" aria-labelledby="awards-title">
+        <div className="about-awards" aria-labelledby="awards-title">
           <div className="about-block-heading">
             <h3 id="awards-title">Awards</h3>
             <p>Academic distinction</p>
           </div>
-          <div className="about-achievement-grid">
+          <div className="about-awards-grid">
             {awards.map((item) => (
-              <article className="about-achievement" key={item.title}>
-                <Icon name="sparkle" className="about-achievement-icon" />
-                <h3>{item.title}</h3>
+              <article className="about-award-card" key={item.title}>
+                <span className="about-award-icon" aria-hidden="true">
+                  <Icon name="sparkle" size={18} />
+                </span>
+                <h4>{item.title}</h4>
                 <p>{item.detail}</p>
               </article>
             ))}
@@ -177,29 +186,35 @@ export default function About() {
             <p>Continuous learning and service</p>
           </div>
           <div className="about-support-grid">
-            <div>
-              <h4>Training & certifications</h4>
-              <ul className="about-simple-list">
+            <div className="about-support-column">
+              <h4 className="about-support-heading">
+                <Icon name="cap" size={18} />
+                Training & certifications
+              </h4>
+              <ul className="about-support-list">
                 {certifications.map((item) => (
-                  <li key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>
+                  <li className="about-support-item" key={item.title}>
+                    <p className="about-support-title">{item.title}</p>
+                    <p className="about-support-meta">
                       {item.org} · {item.date}
-                    </span>
+                    </p>
                   </li>
                 ))}
               </ul>
             </div>
-            <div>
-              <h4>Community & leadership</h4>
-              <ul className="about-simple-list">
+            <div className="about-support-column">
+              <h4 className="about-support-heading">
+                <Icon name="users" size={18} />
+                Community & leadership
+              </h4>
+              <ul className="about-support-list">
                 {community.map((item) => (
-                  <li key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>
+                  <li className="about-support-item" key={item.title}>
+                    <p className="about-support-title">{item.title}</p>
+                    <p className="about-support-meta">
                       {item.org}
                       {item.date ? ` · ${item.date}` : ""}
-                    </span>
+                    </p>
                   </li>
                 ))}
               </ul>

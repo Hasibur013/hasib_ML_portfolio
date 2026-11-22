@@ -1135,6 +1135,177 @@ main#main-content:not(.home-page) > .section:first-child > .container,
   font-size: 0.9rem;
 }
 
+/* Training & community — card rows (fixes broken 24px icon-column layout) */
+.about-support {
+  padding: 28px !important;
+  border-radius: 18px;
+}
+
+.about-support-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.about-support-grid > div {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.about-support-column {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.about-support-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px;
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.about-support-heading svg {
+  color: var(--accent-primary);
+}
+
+.about-support-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.about-support-item {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 4px !important;
+  margin: 0;
+  padding: 14px 16px !important;
+  border: 1px solid color-mix(in srgb, var(--border-default) 88%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-canvas) 55%, transparent);
+}
+
+.about-support-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.about-support-meta {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .about-support-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* How I work — numbered steps matching CSS grid expectations */
+.about-build-list {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-build-list li {
+  display: grid !important;
+  grid-template-columns: 46px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: start;
+  margin: 0;
+  padding: 14px 0 !important;
+  border-top: 1px solid color-mix(in srgb, var(--border-default) 80%, transparent);
+}
+
+.about-build-list li:first-child {
+  border-top: 0;
+  padding-top: 4px !important;
+}
+
+.about-build-list li > span {
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+.about-build-list li > p {
+  margin: 0 !important;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Awards — light cards in one row, no heavy nested block boxing */
+.about-awards {
+  margin-top: 48px;
+}
+
+.about-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.about-award-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--bg-default) 88%, transparent);
+}
+
+.about-award-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 11px;
+  color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 28%, transparent);
+}
+
+.about-award-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.about-award-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .about-awards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .about-research-links {
   display: flex;
   flex-wrap: wrap;
