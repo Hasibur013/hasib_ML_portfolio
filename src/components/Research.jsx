@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { publications } from "../data/research";
 import Icon from "./Icon";
+import ResearchMetrics from "./ResearchMetrics";
 
 export default function Research({ asPage = false }) {
   const [openId, setOpenId] = useState(null);
@@ -28,10 +29,14 @@ export default function Research({ asPage = false }) {
           <h2 className="section-title">Research papers</h2>
           <p className="section-subtitle">Peer-reviewed research and preprints in machine learning and AI</p>
         </div>
-        <div className="publications-list">
+        {asPage && <ResearchMetrics />}
+        <div className="publications-list" id="research-list">
           {items.map((pub) => (
             <article className="publication-card" key={pub.id}>
-              <p className="publication-venue">{pub.venue}</p>
+              <div className="publication-meta">
+                <p className="publication-venue">{pub.venue}</p>
+                {pub.status && <span className="publication-status">{pub.status}</span>}
+              </div>
               <h3 className="publication-title">{pub.title}</h3>
               <p className="publication-authors">{pub.authors}</p>
               <p className="publication-abstract">{pub.abstract}</p>

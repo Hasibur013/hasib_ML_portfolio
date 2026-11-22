@@ -88,6 +88,15 @@ function ScholarLogo({ size = 18, className }) {
   );
 }
 
+/** ResearchGate brand mark (simple-icons path). */
+function ResearchGateLogo({ size = 18, className }) {
+  return (
+    <BrandSvg size={size} className={className}>
+      <path d="M19.586 0c.898 0 1.629.727 1.629 1.625v20.75c0 .898-.731 1.625-1.629 1.625H4.414A1.626 1.626 0 0 1 2.785 22.375V1.625C2.785.727 3.516 0 4.414 0zm-2.5 5.625c-1.292 0-2.229.927-2.229 2.208v.042c0 1.281.937 2.208 2.229 2.208 1.292 0 2.229-.927 2.229-2.208v-.042c0-1.281-.937-2.208-2.229-2.208zm-6.021 0c-1.927 0-3.188 1.323-3.188 3.292 0 1.969 1.261 3.291 3.188 3.291.646 0 1.25-.146 1.75-.417v1.552c0 1.115-.667 1.75-1.771 1.75-.937 0-1.583-.5-1.75-1.25l-1.583.333c.354 1.542 1.687 2.417 3.333 2.417 2.021 0 3.396-1.146 3.396-3.292V8.146h-1.542v.5a2.54 2.54 0 0 0-1.833-.646zm6.021 1.292c.583 0 .979.396.979.916v.042c0 .521-.396.917-.979.917-.583 0-.979-.396-.979-.917v-.042c0-.52.396-.916.979-.916zm-6.021 1.25c.833 0 1.396.625 1.396 1.5s-.563 1.5-1.396 1.5-1.396-.625-1.396-1.5.563-1.5 1.396-1.5z" />
+    </BrandSvg>
+  );
+}
+
 const ICONS = {
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
@@ -125,6 +134,7 @@ const ICONS = {
   phone: Phone,
   sun: Sun,
   repo: FolderOpen,
+  researchgate: ResearchGateLogo,
   scholar: ScholarLogo,
   shield: ShieldCheck,
   sparkle: Sparkle,
@@ -139,7 +149,12 @@ const ICONS = {
 
 export default function Icon({ name, size = 18, weight = "regular", className }) {
   const Cmp = ICONS[name] || Circle;
-  if (Cmp === KaggleLogo || Cmp === LeetCodeLogo || Cmp === ScholarLogo) {
+  if (
+    Cmp === KaggleLogo ||
+    Cmp === LeetCodeLogo ||
+    Cmp === ScholarLogo ||
+    Cmp === ResearchGateLogo
+  ) {
     return <Cmp size={size} className={className} />;
   }
   return <Cmp size={size} weight={weight} className={className} />;

@@ -5,7 +5,7 @@ export default function ResearchPage() {
   useSeo({
     title: "Research",
     description:
-      "Peer-reviewed research in healthcare IoT task offloading and ensemble phishing-website detection.",
+      "Peer-reviewed papers and a journal-bound preprint on healthcare IoT, phishing detection, and leakage-aware dementia ML evaluation.",
     path: "/research",
   });
 

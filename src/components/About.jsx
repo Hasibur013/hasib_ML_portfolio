@@ -149,9 +149,14 @@ export default function About() {
             <p>
               PRALEIT is a priority-aware offloading framework for healthcare IoT, presented at IEEE SMC 2025
               in Vienna. PhishGuard is a stacked ensemble for phishing-website detection, presented at STI 2024
-              in Dhaka. I use the same standard on industry work: a number without a setup is not a result.
+              in Dhaka. A newer Research Square preprint studies leakage-aware dementia detection and will be
+              submitted to a journal. I use the same standard on industry work: a number without a setup is not a
+              result.
             </p>
             <div className="about-research-links">
+              <a href="https://doi.org/10.21203/rs.3.rs-10967756/v1" target="_blank" rel="noreferrer">
+                Dementia ML preprint
+              </a>
               <a href="https://doi.org/10.1109/SMC58881.2025.11343197" target="_blank" rel="noreferrer">
                 IEEE SMC 2025 paper
               </a>
