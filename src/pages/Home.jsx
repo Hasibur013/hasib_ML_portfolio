@@ -12,7 +12,7 @@ export default function Home() {
   useSeo({
     title: "",
     description:
-      "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, and AI automation / VLM systems, with peer-reviewed work in healthcare IoT and phishing detection.",
+      "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, AI automation / VLM, data analytics, and web scraping, with peer-reviewed work in healthcare IoT and phishing detection.",
     path: "/",
   });
 

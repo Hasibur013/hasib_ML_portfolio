@@ -2,10 +2,10 @@ export const profile = {
   name: "Md. Hasibur Rahman",
   shortName: "Hasibur Rahman",
   initials: "HR",
-  tagline: "AI/ML Engineer · CV, OCR, Edge AI & Automation",
-  role: "AI/ML Engineer — Computer Vision, OCR, Face Recognition & Edge AI",
+  tagline: "AI/ML Engineer · CV, OCR, Edge AI, Automation & Analytics",
+  role: "AI/ML Engineer — Computer Vision, OCR, Face Recognition, Edge AI & Analytics",
   cardRole: "AI/ML Engineer",
-  specialty: "CV · OCR · FRS · Edge AI",
+  specialty: "CV · OCR · FRS · Analytics",
   location: "Gazipur, Dhaka, Bangladesh",
   cardLocation: "Gazipur, Bangladesh",
   email: "mlengr.hasibur@gmail.com",
@@ -21,18 +21,19 @@ export const profile = {
   identityId: "HR · ML · 2026",
   photo: "/assets/images/profile.png",
   heroRoles: [
-    "Computer Vision & Edge AI Specialist",
-    "OCR & Face Recognition Engineer",
-    "AI Automation & VLM Systems",
+    "Computer Vision & Edge AI",
+    "OCR & Face Recognition",
+    "AI Automation & VLM",
+    "Data Analytics & Web Scraping",
     "Applied AI/ML Engineer",
   ],
   subtitle:
-    "AI/ML Engineer specializing in computer vision, OCR, face recognition, and Edge AI — with growing work in AI automation, voice agents, and VLM-assisted pipelines from data to deployment.",
-  badge: "Available for AI/ML, Computer Vision & Automation roles",
+    "AI/ML Engineer specializing in computer vision, OCR, face recognition, and Edge AI — with work in AI automation, VLM pipelines, data analytics, and web scraping from data to deployment.",
+  badge: "Available for AI/ML, Computer Vision, Automation & Analytics roles",
   footerBlurb:
-    "AI/ML Engineer building computer vision, OCR, face recognition, Edge AI, and automation systems. Open to collaborations and opportunities.",
+    "AI/ML Engineer building computer vision, OCR, face recognition, Edge AI, automation, analytics, and scraping systems. Open to collaborations and opportunities.",
   seoDescription:
-    "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, and AI automation / VLM systems, with peer-reviewed research in healthcare IoT and phishing detection.",
+    "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, AI automation / VLM, data analytics, and web scraping, with peer-reviewed research in healthcare IoT and phishing detection.",
 };
 
 export const navLinks = [
