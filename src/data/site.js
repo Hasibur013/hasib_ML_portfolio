@@ -326,13 +326,28 @@ export const aboutCapabilities = [
   "Services and agents with Python, FastAPI, LLMs, and Azure VM deployment",
 ];
 
+/** Icon-bar order: LinkedIn → Kaggle → Scholar → GitHub → LeetCode (+ contact after). */
 export const socials = [
+  {
+    href: "https://www.linkedin.com/in/md-hasibur-rahman-2286321b9/",
+    icon: "linkedin",
+    label: "LinkedIn",
+    detail: "md-hasibur-rahman",
+  },
+  { href: "https://www.kaggle.com/hasibur013", icon: "kaggle", label: "Kaggle", detail: "hasibur013" },
+  {
+    href: "https://scholar.google.com/citations?user=PyEMtfkAAAAJ&hl=en",
+    icon: "scholar",
+    label: "Google Scholar",
+    detail: "Citations",
+  },
   { href: "https://github.com/Hasibur013", icon: "github", label: "GitHub", detail: "@Hasibur013" },
-  { href: "https://www.linkedin.com/in/md-hasibur-rahman-2286321b9/", icon: "linkedin", label: "LinkedIn", detail: "md-hasibur-rahman" },
-  { href: "https://scholar.google.com/citations?user=PyEMtfkAAAAJ&hl=en", icon: "scholar", label: "Google Scholar", detail: "Citations" },
-  { href: "https://www.kaggle.com/hasibur013", icon: "sparkle", label: "Kaggle", detail: "hasibur013" },
-  { href: "https://leetcode.com/u/Hasibur013/", icon: "lightning", label: "LeetCode", detail: "Hasibur013" },
+  { href: "https://leetcode.com/u/Hasibur013/", icon: "leetcode", label: "LeetCode", detail: "Hasibur013" },
   { href: "mailto:mlengr.hasibur@gmail.com", icon: "mail", label: "Email", detail: "mlengr.hasibur@gmail.com" },
   { href: "tel:+8801610768178", icon: "phone", label: "Phone", detail: "+880 1610-768178" },
   { href: "https://wa.me/8801610768178", icon: "whatsapp", label: "WhatsApp", detail: "Message me" },
 ];
+
+export const profileSocials = socials.filter((item) =>
+  ["linkedin", "kaggle", "scholar", "github", "leetcode"].includes(item.icon)
+);

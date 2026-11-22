@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cvs, heroStats, profile, socials, techStack } from "../data/site";
+import { cvs, heroStats, profile, profileSocials, socials, techStack } from "../data/site";
 import Icon from "./Icon";
 
-const heroSocials = socials.filter((item) =>
-  ["github", "linkedin", "scholar", "sparkle", "lightning", "mail"].includes(item.icon)
-);
+const heroSocials = [
+  ...profileSocials,
+  socials.find((item) => item.icon === "mail"),
+].filter(Boolean);
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);

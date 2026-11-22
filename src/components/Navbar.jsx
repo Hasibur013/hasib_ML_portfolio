@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { navLinks, profile } from "../data/site";
+import { navLinks, profile, profileSocials } from "../data/site";
 import Icon from "./Icon";
 import ThemeToggle from "./ThemeToggle";
 
@@ -51,15 +51,19 @@ export default function Navbar() {
 
         <div className="navbar-actions">
           <ThemeToggle />
-          <a className="navbar-icon" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-            <Icon name="github" size={20} />
-          </a>
-          <a className="navbar-icon" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <Icon name="linkedin" size={20} />
-          </a>
-          <a className="navbar-icon" href={profile.scholar} target="_blank" rel="noreferrer" aria-label="Google Scholar">
-            <Icon name="scholar" size={20} />
-          </a>
+          {profileSocials.map((item) => (
+            <a
+              key={item.label}
+              className="navbar-icon"
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={item.label}
+              title={item.label}
+            >
+              <Icon name={item.icon} size={20} />
+            </a>
+          ))}
           <button
             type="button"
             className="navbar-toggle"

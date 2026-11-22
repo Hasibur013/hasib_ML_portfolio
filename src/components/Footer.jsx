@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-import { navLinks, profile } from "../data/site";
+import { navLinks, profile, profileSocials, socials } from "../data/site";
 import Icon from "./Icon";
+
+const footerSocials = [
+  ...profileSocials,
+  socials.find((item) => item.icon === "mail"),
+].filter(Boolean);
 
 export default function Footer() {
   return (
@@ -15,18 +20,19 @@ export default function Footer() {
           </div>
           <p className="footer-description">{profile.footerBlurb}</p>
           <div className="footer-social" aria-label="Social profiles">
-            <a className="social-link" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <Icon name="github" size={20} />
-            </a>
-            <a className="social-link" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <Icon name="linkedin" size={20} />
-            </a>
-            <a className="social-link" href={profile.scholar} target="_blank" rel="noreferrer" aria-label="Google Scholar">
-              <Icon name="scholar" size={20} />
-            </a>
-            <a className="social-link" href={`mailto:${profile.email}`} aria-label="Email">
-              <Icon name="mail" size={20} />
-            </a>
+            {footerSocials.map((item) => (
+              <a
+                key={item.label}
+                className="social-link"
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                aria-label={item.label}
+                title={item.label}
+              >
+                <Icon name={item.icon} size={20} />
+              </a>
+            ))}
           </div>
         </div>
 
