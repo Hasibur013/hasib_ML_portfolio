@@ -27,7 +27,7 @@ jobs:
       - name: Install scholarly dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --only-binary=:all: "bibtexparser==1.4.1" "scholarly==1.7.11"
+          python -m pip install --upgrade --force-reinstall "bibtexparser==1.4.3" scholarly
           python -c "from bibtexparser.bibdatabase import BibDatabase; import scholarly; print('scholarly deps ok')"
 
       - name: Fetch Scholar stats
