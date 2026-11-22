@@ -144,6 +144,170 @@ export const techStack = [
   "MLflow",
 ];
 
+/** Hero stack tabs: focus → subcategory → tools (overlap across tabs is intentional). */
+export const stackTabs = [
+  {
+    id: "ai-ml",
+    title: "AI / ML",
+    blurb: "Core languages, frameworks, and training tooling for applied ML work.",
+    groups: [
+      { label: "Languages", items: ["Python"] },
+      { label: "Frameworks", items: ["PyTorch", "PyTorch Lightning"] },
+      { label: "Libraries", items: ["NumPy", "Gradio", "Grad-CAM", "Pandas"] },
+      {
+        label: "Models",
+        items: ["ResNet", "Transformers", "LLM", "EfficientNet", "U-Net"],
+      },
+      {
+        label: "Tools / Other",
+        items: [
+          "MLflow",
+          "Transfer Learning",
+          "Supervised Learning",
+          "Unsupervised Learning",
+          "Git / GitHub",
+          "MySQL",
+          "SQLite",
+        ],
+      },
+    ],
+  },
+  {
+    id: "cv-edge",
+    title: "CV & Edge",
+    blurb: "Detection, tracking, video analytics, and edge deployment stack.",
+    groups: [
+      { label: "Languages", items: ["Python"] },
+      { label: "Frameworks", items: ["OpenCV", "PyTorch", "TensorRT"] },
+      {
+        label: "Libraries",
+        items: [
+          "ByteTrack",
+          "DeepSORT",
+          "Multi-camera RTSP",
+          "Homography",
+          "MediaPipe",
+          "CentroidTracker",
+        ],
+      },
+      {
+        label: "Models",
+        items: [
+          "YOLO11",
+          "YOLO-OBB",
+          "YOLOE",
+          "YOLOv8-Pose",
+          "U-Net",
+          "InsightFace",
+          "Depth-Anything-V2",
+        ],
+      },
+      {
+        label: "Tools / Other",
+        items: [
+          "Object Detection",
+          "Instance Segmentation",
+          "Pose Estimation",
+          "Image Processing",
+          "Video Processing",
+          "ROI & Line-Crossing Logic",
+          "Temporal Voting",
+          "State Machines",
+          "Session Deduplication",
+          "Evidence Generation",
+          "Jetson Orin Nano",
+          "On-site Integration",
+          "Industrial Safety",
+          "Banking Surveillance",
+          "Ports & Logistics",
+          "Manufacturing Inspection",
+          "Retail Analytics",
+        ],
+      },
+    ],
+  },
+  {
+    id: "ocr-frs",
+    title: "OCR & FRS",
+    blurb: "Text recognition, annotation, and face identity pipelines.",
+    groups: [
+      { label: "Languages", items: ["Python"] },
+      { label: "Frameworks", items: ["PaddleOCR", "Roboflow", "OpenCV"] },
+      { label: "Libraries", items: ["FAISS", "pyzbar", "Flask"] },
+      {
+        label: "Models",
+        items: ["Bangla OCR / ANPR", "InsightFace", "ArcFace", "EfficientNet", "YOLO-OBB"],
+      },
+      {
+        label: "Tools / Other",
+        items: [
+          "Data Annotation",
+          "OCR Validation",
+          "ISO 6346 Validation",
+          "Format / District Validation",
+          "Confidence Voting",
+          "CIN API Integration",
+          "Bangla ANPR",
+        ],
+      },
+    ],
+  },
+  {
+    id: "automation",
+    title: "Automation & VLM",
+    blurb: "API services, agents, retrieval, and vision-language verification.",
+    groups: [
+      { label: "Languages", items: ["Python"] },
+      { label: "Frameworks", items: ["FastAPI", "Django", "Flask", "Streamlit"] },
+      {
+        label: "Libraries",
+        items: ["Sentence Transformers", "SQLite WAL / FTS5", "PyYAML", "Grafana"],
+      },
+      {
+        label: "Models",
+        items: ["LLM Agents", "Ollama / VLM", "YOLOE", "Transformers"],
+      },
+      {
+        label: "Tools / Other",
+        items: [
+          "RAG / BM25",
+          "Reciprocal Rank Fusion",
+          "Azure VM",
+          "Rate Limiting / RBAC",
+          "API Delivery",
+          "Git / GitHub",
+          "Healthcare AI",
+        ],
+      },
+    ],
+  },
+  {
+    id: "analytics",
+    title: "Analytics & Scraping",
+    blurb: "Data prep, visualization, and web data collection tooling.",
+    groups: [
+      { label: "Languages", items: ["Python"] },
+      { label: "Frameworks", items: ["Power BI"] },
+      {
+        label: "Libraries",
+        items: ["Pandas", "NumPy", "Seaborn", "Matplotlib"],
+      },
+      { label: "Models", items: ["EDA", "KPI Modeling"] },
+      {
+        label: "Tools / Other",
+        items: [
+          "BeautifulSoup",
+          "Requests",
+          "Selenium",
+          "Scrapy",
+          "Git / GitHub",
+          "Retail Analytics",
+        ],
+      },
+    ],
+  },
+];
+
 export const heroFocus = [
   {
     title: "Computer Vision Systems",

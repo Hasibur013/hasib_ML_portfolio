@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cvs, heroStats, profile, profileSocials, socials, techStack } from "../data/site";
+import { cvs, heroStats, profile, profileSocials, socials } from "../data/site";
 import Icon from "./Icon";
+import StackTabs from "./StackTabs";
 
 const heroSocials = [
   ...profileSocials,
@@ -121,13 +122,7 @@ export default function Hero() {
         </aside>
       </div>
 
-      <div className="tech-marquee" aria-label="Core technology stack">
-        <div className="tech-marquee-track">
-          {[...techStack, ...techStack].map((item, i) => (
-            <span key={`${item}-${i}`}>{item}</span>
-          ))}
-        </div>
-      </div>
+      <StackTabs />
     </section>
   );
 }
