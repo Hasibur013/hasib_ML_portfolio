@@ -20,13 +20,34 @@ export const profile = {
   website: "https://hasibur013.github.io/",
   identityId: "HR · ML · 2026",
   photo: "/assets/images/profile.png",
-  heroRoles: [
-    "Computer Vision & Edge AI",
-    "OCR & Face Recognition",
-    "AI Automation & VLM",
-    "Data Analytics & Web Scraping",
-    "Applied AI/ML Engineer",
+  heroRotations: [
+    {
+      title: "Computer Vision & Edge AI",
+      description:
+        "I build detection, tracking, and video analytics pipelines and deploy them on edge devices for real-time industrial and security use cases.",
+    },
+    {
+      title: "OCR & Face Recognition",
+      description:
+        "I fine-tune OCR and face-recognition systems for Bangla plates, industrial text, and identity review workflows with reliable validation.",
+    },
+    {
+      title: "AI Automation & VLM",
+      description:
+        "I design API-first agents, RAG workflows, and VLM-assisted verification that turn models into usable automation services.",
+    },
+    {
+      title: "Data Analytics & Web Scraping",
+      description:
+        "I collect and clean web/data sources, then turn them into dashboards, KPIs, and decision-ready analytics for business and research needs.",
+    },
+    {
+      title: "Applied AI/ML Engineer",
+      description:
+        "I take AI systems from annotation and training through APIs and deployment — computer vision, automation, analytics, and production delivery.",
+    },
   ],
+  /** Fallback one-liner for SEO / meta; hero rotates via heroRotations. */
   subtitle:
     "AI/ML Engineer specializing in computer vision, OCR, face recognition, and Edge AI — with work in AI automation, VLM pipelines, data analytics, and web scraping from data to deployment.",
   badge: "Available for AI/ML, Computer Vision, Automation & Analytics roles",

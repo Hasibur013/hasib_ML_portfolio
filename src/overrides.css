@@ -122,8 +122,17 @@ body {
   white-space: nowrap;
 }
 
-.hero-subtitle {
+.hero-focus {
   margin: 0 0 28px;
+  min-height: 7.5rem;
+}
+
+.hero-focus .hero-role {
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  margin: 0;
   max-width: 640px;
   color: color-mix(in srgb, var(--text-secondary) 92%, var(--text-primary));
   font-family: var(--font-sans);

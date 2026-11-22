@@ -12,12 +12,15 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [cvOpen, setCvOpen] = useState(false);
 
+  const rotations = profile.heroRotations;
+  const activeFocus = rotations[roleIndex] || rotations[0];
+
   useEffect(() => {
     const id = setInterval(() => {
-      setRoleIndex((i) => (i + 1) % profile.heroRoles.length);
-    }, 2600);
+      setRoleIndex((i) => (i + 1) % rotations.length);
+    }, 5500);
     return () => clearInterval(id);
-  }, []);
+  }, [rotations.length]);
 
   return (
     <section className="hero">
@@ -32,10 +35,10 @@ export default function Hero() {
           <span className="hero-badge">{profile.badge}</span>
           <p className="hero-kicker">Hello, I’m</p>
           <h1 className="hero-title">{profile.name}</h1>
-          <p className="hero-role" aria-live="polite">
-            {profile.heroRoles[roleIndex]}
-          </p>
-          <p className="hero-subtitle">{profile.subtitle}</p>
+          <div className="hero-focus" aria-live="polite">
+            <p className="hero-role">{activeFocus.title}</p>
+            <p className="hero-subtitle">{activeFocus.description}</p>
+          </div>
 
           <div className="hero-cta">
             <Link to="/projects" className="btn btn-primary">
