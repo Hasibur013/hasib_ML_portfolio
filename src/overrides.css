@@ -106,12 +106,13 @@ body {
 .stack-tabs {
   position: relative;
   z-index: 2;
-  width: min(100% - 48px, 1200px);
+  max-width: var(--page-max, 1200px);
+  width: 100%;
   margin: 18px auto 28px;
   display: grid;
   gap: 14px;
   box-sizing: border-box;
-  padding-inline: 0;
+  padding-inline: var(--page-gutter, 24px);
 }
 
 .skills-page .section-header {
@@ -254,7 +255,8 @@ body {
 
 @media (max-width: 768px) {
   .stack-tabs {
-    width: min(100%, 1200px);
+    max-width: var(--page-max, 1200px);
+    width: 100%;
     margin: 14px auto 24px;
   }
 
@@ -445,12 +447,76 @@ body {
   line-height: 1.35;
 }
 
+/* Shared page rail: navbar, sections, footer share one left edge */
+:root {
+  --page-max: 1200px;
+  --page-gutter: 24px;
+}
+
+.navbar-inner,
+.footer,
+.container {
+  max-width: var(--page-max);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+  box-sizing: border-box;
+}
+
 .navbar-inner {
   display: grid;
   grid-template-columns: minmax(220px, 1.15fr) auto minmax(200px, 0.95fr);
   align-items: center;
   gap: 10px 14px;
   justify-content: stretch;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 0;
+  padding-bottom: 120px;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--border-default) 85%, transparent);
+  border-radius: 0;
+  background: transparent;
+}
+
+.footer-content {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 40px 0 28px;
+  box-sizing: border-box;
+}
+
+.footer-bottom {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--border-default) 70%, transparent);
+  box-sizing: border-box;
+}
+
+.footer-heading {
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
+
+.footer-description {
+  max-width: 420px;
+  line-height: 1.55;
+}
+
+/* Keep contact cards on the same content rail (less inner push) */
+.contact-info,
+.contact-form {
+  padding-left: 22px !important;
+  padding-right: 22px !important;
 }
 
 .navbar-links {
@@ -746,62 +812,118 @@ body {
   display: none;
 }
 
-/* Homepage/about sections lost vertical padding in the compiled CSS cascade. */
+/* Default section padding (non-home pages). */
 .section > .container {
-  padding-top: 88px;
-  padding-bottom: 88px;
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
-/* Home page: tighter gaps + consistent left alignment */
+/* Home page: kill stacked gaps across the full page */
+.home-page .section {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
 .home-page > .section > .container {
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
 }
 
 .home-page > .impact-strip-section > .container,
-.home-page > .cv-workflow-section > .container {
-  padding-top: 32px;
-  padding-bottom: 32px;
+.home-page > .cv-workflow-section > .container,
+.home-page > .about-section-compact > .container {
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
 }
 
 .home-page > .section .section-header {
   text-align: left;
-  margin-bottom: 24px;
+  margin: 0 0 18px !important;
   max-width: none;
 }
 
+.home-page > .section .section-label {
+  margin-bottom: 8px;
+}
+
+.home-page > .section .section-title {
+  margin-bottom: 8px;
+}
+
 .home-page > .section .section-subtitle {
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
   max-width: 680px;
 }
 
 .home-page > .section .section-cta {
   display: flex;
   justify-content: flex-start;
+  margin-top: 18px;
+}
+
+/* Clear separation between sub-blocks inside Highlights (no overlap). */
+.home-page .skills-container {
+  margin-bottom: 8px;
+}
+
+.home-page .highlights-followup {
+  margin-top: 2.75rem !important;
+  padding-top: 1.25rem !important;
+  border-top: 1px solid color-mix(in srgb, var(--border-default) 75%, transparent);
+}
+
+.home-page .about-achievement-grid {
+  margin-bottom: 8px;
+}
+
+.home-page .about-method-grid {
+  margin-top: 2.5rem !important;
+  padding-top: 1.1rem !important;
+  border-top: 1px solid color-mix(in srgb, var(--border-default) 75%, transparent);
+}
+
+.home-page .hero {
+  min-height: 0 !important;
+  height: auto !important;
+  /* Keep clearance under fixed navbar so the availability badge stays visible */
+  padding: 108px 0 0 !important;
 }
 
 .home-page .hero .container.hero-shell,
 .home-page .hero .hero-shell {
-  max-width: 1200px;
+  max-width: var(--page-max);
   width: 100%;
-  min-height: 0;
+  min-height: 0 !important;
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-top: 12px !important;
+  padding-bottom: 20px !important;
+  padding-inline: var(--page-gutter);
   box-sizing: border-box;
 }
 
 .home-page .stack-tabs {
-  width: min(100%, 1200px);
-  padding-inline: 24px;
-  margin-inline: auto;
+  max-width: var(--page-max);
+  width: 100%;
+  padding-inline: var(--page-gutter);
+  margin: 8px auto 18px;
   box-sizing: border-box;
 }
 
-main#main-content > .section:first-child > .container,
+.home-page .projects-section .projects-list,
+.home-page .projects-card-grid {
+  margin-top: 16px;
+}
+
+/* Offset under fixed navbar — not on home (hero handles that). */
+main#main-content:not(.home-page) > .section:first-child > .container,
 .about-page > .about-section > .container,
 .about-page > #about > .container {
-  padding-top: 132px;
+  padding-top: 120px;
+}
+
+.home-page > .section:first-of-type > .container {
+  padding-top: 24px !important;
 }
 
 .about-section-compact .about-compact {
@@ -1140,8 +1262,15 @@ main#main-content > .section:first-child > .container,
   z-index: 1100;
 }
 
-.footer {
-  padding-bottom: 120px;
+@media (max-width: 768px) {
+  :root {
+    --page-gutter: 16px;
+  }
+
+  .footer-content {
+    padding-top: 32px;
+    padding-bottom: 22px;
+  }
 }
 
 .back-to-top-btn {
@@ -1288,23 +1417,31 @@ main#main-content > .section:first-child > .container,
   }
 
   .home-page > .section > .container {
-    padding-top: 36px;
-    padding-bottom: 40px;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
   }
 
   .home-page > .impact-strip-section > .container,
-  .home-page > .cv-workflow-section > .container {
-    padding-top: 24px;
-    padding-bottom: 24px;
+  .home-page > .cv-workflow-section > .container,
+  .home-page > .about-section-compact > .container {
+    padding-top: 22px !important;
+    padding-bottom: 22px !important;
+  }
+
+  .home-page .highlights-followup,
+  .home-page .about-method-grid {
+    margin-top: 2rem !important;
+    padding-top: 1rem !important;
   }
 
   .home-page .stack-tabs {
-    padding-inline: 16px;
+    padding-inline: var(--page-gutter);
+    margin-bottom: 12px;
   }
 
   .section > .container {
-    padding-top: 64px;
-    padding-bottom: 72px;
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 
   main#main-content > .section:first-child > .container,
