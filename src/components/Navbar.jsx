@@ -57,6 +57,9 @@ export default function Navbar() {
           <a className="navbar-icon" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <Icon name="linkedin" size={20} />
           </a>
+          <a className="navbar-icon" href={profile.scholar} target="_blank" rel="noreferrer" aria-label="Google Scholar">
+            <Icon name="scholar" size={20} />
+          </a>
           <button
             type="button"
             className="navbar-toggle"
