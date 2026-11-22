@@ -114,6 +114,31 @@ body {
   padding-inline: 0;
 }
 
+.skills-page .section-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.skills-page .section-subtitle {
+  margin-left: 0;
+  max-width: 680px;
+}
+
+.skills-stack-embed .stack-tabs {
+  width: 100%;
+  margin: 0 0 40px;
+  padding-inline: 0;
+}
+
+.skills-domains-header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.skills-domains-header .section-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
 .stack-tablist {
   display: flex;
   flex-wrap: wrap;

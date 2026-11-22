@@ -4,7 +4,8 @@ import Skills from "../components/Skills";
 export default function SkillsPage() {
   useSeo({
     title: "Skills",
-    description: "Computer vision, OCR, PyTorch, FastAPI, annotation, and applied ML stack.",
+    description:
+      "AI/ML, computer vision, OCR, face recognition, automation, VLM, analytics, and scraping tools organized by stack.",
     path: "/skills",
   });
 
