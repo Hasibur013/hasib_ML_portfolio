@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cvs, heroStats, profile, techStack } from "../data/site";
+import { cvs, heroStats, profile, socials, techStack } from "../data/site";
 import Icon from "./Icon";
+
+const heroSocials = socials.filter((item) =>
+  ["github", "linkedin", "scholar", "sparkle", "lightning", "mail"].includes(item.icon)
+);
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -93,6 +97,21 @@ export default function Hero() {
               <span aria-hidden="true">·</span>
               <span>{profile.cardLocation}</span>
             </p>
+            <div className="hero-portrait-socials" aria-label="Social profiles">
+              {heroSocials.map((item) => (
+                <a
+                  key={item.label}
+                  className="hero-portrait-social"
+                  href={item.href}
+                  target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={item.label}
+                  title={item.label}
+                >
+                  <Icon name={item.icon} size={18} />
+                </a>
+              ))}
+            </div>
           </div>
         </aside>
       </div>
