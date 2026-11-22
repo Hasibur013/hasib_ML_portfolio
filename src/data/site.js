@@ -74,6 +74,63 @@ export const heroStats = [
   { value: "2", label: "Research publications" },
 ];
 
+/** Team-program scale from Bondstein CV deployments you contributed to. */
+export const impactMetrics = [
+  {
+    value: "1,500+",
+    description: "Live camera feeds aligned across enterprise programs I contributed to",
+    label: "deployment scale",
+  },
+  {
+    value: "700+",
+    description: "Locations represented across banking and industrial operations",
+    label: "multi-site delivery",
+  },
+  {
+    value: "20+",
+    description: "AI detection and operational scenarios translated into products",
+    label: "use-case portfolio",
+  },
+  {
+    value: "10+",
+    description: "Production CV and automation projects delivered with the R&D team",
+    label: "project delivery",
+  },
+  {
+    value: "2",
+    description: "Peer-reviewed research works in healthcare IoT and applied ML security",
+    label: "research record",
+  },
+];
+
+/** End-to-end computer vision delivery workflow. */
+export const cvWorkflowSteps = [
+  {
+    title: "Requirements analysis",
+    text: "Capture the client use-case, SOP rules, success criteria, and what the system must detect or verify.",
+  },
+  {
+    title: "Camera positioning",
+    text: "Fix camera placement and angles based on the detection need — coverage, distance, occlusion, and lighting.",
+  },
+  {
+    title: "Setup & RTSP",
+    text: "Configure cameras, network paths, and RTSP streams so live feeds are stable for analytics.",
+  },
+  {
+    title: "Live POC",
+    text: "Run a proof-of-concept on live video with the client and iterate until the approach is validated.",
+  },
+  {
+    title: "Build & harden",
+    text: "Complete models, tracking, rules, alerts, and evidence pipelines after client satisfaction.",
+  },
+  {
+    title: "On-prem / Edge deploy",
+    text: "Deploy to on-premise servers or Edge AI devices (e.g. Jetson) for production operation.",
+  },
+];
+
 export const techStack = [
   "Python",
   "PyTorch",

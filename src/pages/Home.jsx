@@ -1,8 +1,10 @@
 import { AboutCompact } from "../components/About";
 import Contact from "../components/Contact";
+import CvWorkflow from "../components/CvWorkflow";
 import Experience from "../components/Experience";
 import Hero from "../components/Hero";
 import Highlights from "../components/Highlights";
+import ImpactStrip from "../components/ImpactStrip";
 import Projects from "../components/Projects";
 import Research from "../components/Research";
 import useSeo from "../components/Seo";
@@ -19,6 +21,8 @@ export default function Home() {
   return (
     <main id="main-content" tabIndex={-1}>
       <Hero />
+      <ImpactStrip />
+      <CvWorkflow />
       <Highlights />
       <AboutCompact />
       <Experience compact />

@@ -74,8 +74,9 @@ export default function Hero() {
                 )}
               </div>
             )}
-            <a href={profile.github} className="btn btn-ghost" target="_blank" rel="noreferrer">
-              GitHub profile
+            <a href={profile.linkedin} className="btn btn-ghost" target="_blank" rel="noreferrer">
+              <Icon name="linkedin" size={18} />
+              LinkedIn
             </a>
           </div>
 

@@ -459,6 +459,120 @@ body {
   padding-bottom: 36px;
 }
 
+/* Impact strip — team deployment scale */
+.impact-strip-section .impact-strip-header {
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.impact-strip-section .section-subtitle {
+  margin: 0;
+  max-width: 640px;
+}
+
+.impact-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border: 1px solid var(--border-default);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-default) 88%, transparent);
+  overflow: hidden;
+}
+
+.impact-strip-item {
+  display: grid;
+  gap: 10px;
+  padding: 28px 22px;
+  border-right: 1px solid var(--border-default);
+  min-width: 0;
+}
+
+.impact-strip-item:last-child {
+  border-right: 0;
+}
+
+.impact-strip-value {
+  margin: 0;
+  color: var(--accent-primary);
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.impact-strip-description {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.impact-strip-label {
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+/* CV delivery workflow */
+.cv-workflow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  position: relative;
+}
+
+.cv-workflow-step {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 22px 16px;
+  border: 1px solid var(--border-default);
+  border-right-width: 0;
+  background: color-mix(in srgb, var(--bg-default) 82%, transparent);
+  min-width: 0;
+}
+
+.cv-workflow-step:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.cv-workflow-step:last-child {
+  border-right-width: 1px;
+  border-radius: 0 16px 16px 0;
+}
+
+.cv-workflow-index {
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.cv-workflow-body h3 {
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.cv-workflow-body p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.cv-workflow-arrow {
+  display: none;
+}
+
 /* Homepage/about sections lost vertical padding in the compiled CSS cascade. */
 .section > .container {
   padding-top: 88px;
@@ -870,6 +984,63 @@ main#main-content > .section:first-child > .container,
   .navbar-link {
     padding: 7px 9px;
     font-size: 13px;
+  }
+
+  .impact-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .impact-strip-item {
+    border-right: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .impact-strip-item:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .impact-strip-item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .impact-strip-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+
+  .cv-workflow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .cv-workflow-step,
+  .cv-workflow-step:first-child,
+  .cv-workflow-step:last-child {
+    border-width: 1px;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .impact-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-strip-item,
+  .impact-strip-item:nth-child(2n),
+  .impact-strip-item:nth-last-child(-n + 2),
+  .impact-strip-item:last-child:nth-child(odd) {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-default);
+    grid-column: auto;
+  }
+
+  .impact-strip-item:last-child {
+    border-bottom: 0;
+  }
+
+  .cv-workflow {
+    grid-template-columns: 1fr;
   }
 }
 
