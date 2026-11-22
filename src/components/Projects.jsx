@@ -9,6 +9,26 @@ import {
 } from "../data/projects";
 import Icon from "./Icon";
 
+const TYPE_ICONS = {
+  All: "repo",
+  Industry: "briefcase",
+  Personal: "user",
+};
+
+const ROLE_ICONS = {
+  All: "users",
+  "ML Engineer": "cpu",
+  "AI Engineer": "brain",
+  "Data / Business Analyst": "trend",
+};
+
+const DOMAIN_ICONS = {
+  All: "stack",
+  "Computer Vision": "eye",
+  "AI Automation": "architecture",
+  "Data Analytics": "trend",
+};
+
 function isWideLogo(project) {
   return (
     project.companyLogoStyle === "wide" ||
@@ -75,28 +95,41 @@ function ProjectCard({ project }) {
   );
 }
 
-function FilterRow({ label, options, value, onChange }) {
+function IconFilterBar({ label, options, value, onChange, icons, labelMap }) {
   return (
-    <div className="projects-filter-row" role="group" aria-label={label}>
-      <span className="projects-filter-label">{label}</span>
-      <div className="projects-filter-pills">
-        {options.map((option) => (
-          <button
-            key={option}
-            type="button"
-            className={`filter-btn${value === option ? " active" : ""}`}
-            aria-pressed={value === option}
-            onClick={() => onChange(option)}
-          >
-            {option}
-          </button>
-        ))}
+    <div className="projects-icon-filters" role="group" aria-label={label}>
+      <p className="projects-icon-filters-label">{label}</p>
+      <div className="projects-icon-filters-row">
+        {options.map((option) => {
+          const display =
+            labelMap?.[option] ||
+            (option === "All" && label === "Type"
+              ? "All projects"
+              : option === "All" && label === "Role"
+                ? "All roles"
+                : option === "All" && label === "Domain"
+                  ? "All domains"
+                  : option);
+
+          return (
+            <button
+              key={option}
+              type="button"
+              className={`projects-icon-filter${value === option ? " is-active" : ""}`}
+              aria-pressed={value === option}
+              onClick={() => onChange(option)}
+            >
+              <Icon name={icons[option] || "dot"} size={16} />
+              <span>{display}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function subtitleFor({ personalOnly, featuredOnly, category, domain, role }) {
+function subtitleFor({ personalOnly, featuredOnly, category, domain, role, count }) {
   if (personalOnly) {
     return "Independent ML, healthcare, and analytics work alongside the team case studies";
   }
@@ -105,15 +138,15 @@ function subtitleFor({ personalOnly, featuredOnly, category, domain, role }) {
   }
 
   const bits = [];
-  if (role !== "All") bits.push(`${role} focus`);
-  if (domain !== "All") bits.push(domain.toLowerCase());
-  if (category !== "All") bits.push(`${category.toLowerCase()} work`);
+  if (role !== "All") bits.push(role);
+  if (domain !== "All") bits.push(domain);
+  if (category !== "All") bits.push(category);
 
   if (!bits.length) {
-    return "Production systems across surveillance, logistics, manufacturing, and smart systems";
+    return `Showing ${count} projects. Related system modules are listed separately.`;
   }
 
-  return `Showing ${bits.join(" · ")} — switch filters to tailor this page for different roles.`;
+  return `Showing ${count} projects · ${bits.join(" · ")}`;
 }
 
 export default function Projects({
@@ -159,23 +192,58 @@ export default function Projects({
                   ? "Selected personal projects"
                   : "All projects"}
             </h2>
-            <p className="section-subtitle">
-              {subtitleFor({ personalOnly, featuredOnly, category, domain, role })}
-            </p>
+            {!asPage && (
+              <p className="section-subtitle">
+                {subtitleFor({
+                  personalOnly,
+                  featuredOnly,
+                  category,
+                  domain,
+                  role,
+                  count: visible.length,
+                })}
+              </p>
+            )}
           </div>
-          {asPage && (
-            <p className="results-count projects-results-count" aria-live="polite">
-              Showing <strong>{visible.length}</strong>
-            </p>
-          )}
         </div>
 
         {asPage && (
-          <div className="projects-filters">
-            <FilterRow label="Type" options={projectCategories} value={category} onChange={setCategory} />
-            <FilterRow label="Domain" options={projectDomains} value={domain} onChange={setDomain} />
-            <FilterRow label="Role" options={projectRoles} value={role} onChange={setRole} />
+          <div className="projects-filters projects-filters-iconed">
+            <IconFilterBar
+              label="Type"
+              options={projectCategories}
+              value={category}
+              onChange={setCategory}
+              icons={TYPE_ICONS}
+            />
+            <IconFilterBar
+              label="Role"
+              options={projectRoles}
+              value={role}
+              onChange={setRole}
+              icons={ROLE_ICONS}
+            />
+            <IconFilterBar
+              label="Domain"
+              options={projectDomains}
+              value={domain}
+              onChange={setDomain}
+              icons={DOMAIN_ICONS}
+            />
           </div>
+        )}
+
+        {asPage && (
+          <p className="projects-filter-summary" aria-live="polite">
+            {subtitleFor({
+              personalOnly,
+              featuredOnly,
+              category,
+              domain,
+              role,
+              count: visible.length,
+            })}
+          </p>
         )}
 
         <div className="projects-list projects-card-grid">
@@ -185,7 +253,7 @@ export default function Projects({
         </div>
 
         {asPage && visible.length === 0 && (
-          <p className="projects-empty">No projects match these filters. Try another domain or role.</p>
+          <p className="projects-empty">No projects match these filters. Try another role or domain.</p>
         )}
 
         {!asPage && !personalOnly && (
