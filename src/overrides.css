@@ -121,6 +121,15 @@ body {
   color: var(--accent-primary);
 }
 
+.hero-subtitle {
+  margin: 0 0 28px;
+  max-width: 640px;
+  color: color-mix(in srgb, var(--text-secondary) 92%, var(--text-primary));
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.8vw, 1.18rem);
+  line-height: 1.65;
+}
+
 .hero-portrait {
   position: relative;
   z-index: 1;
