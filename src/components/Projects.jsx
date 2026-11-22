@@ -1,6 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { isListedProject, projectCategories, projects } from "../data/projects";
+import {
+  isListedProject,
+  projectCategories,
+  projectDomains,
+  projectRoles,
+  projects,
+} from "../data/projects";
 import Icon from "./Icon";
 
 function isWideLogo(project) {
@@ -69,56 +75,106 @@ function ProjectCard({ project }) {
   );
 }
 
+function FilterRow({ label, options, value, onChange }) {
+  return (
+    <div className="projects-filter-row" role="group" aria-label={label}>
+      <span className="projects-filter-label">{label}</span>
+      <div className="projects-filter-pills">
+        {options.map((option) => (
+          <button
+            key={option}
+            type="button"
+            className={`filter-btn${value === option ? " active" : ""}`}
+            aria-pressed={value === option}
+            onClick={() => onChange(option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function subtitleFor({ personalOnly, featuredOnly, category, domain, role }) {
+  if (personalOnly) {
+    return "Independent ML, healthcare, and analytics work alongside the team case studies";
+  }
+  if (featuredOnly) {
+    return "Selected production systems across surveillance, logistics, and manufacturing";
+  }
+
+  const bits = [];
+  if (role !== "All") bits.push(`${role} focus`);
+  if (domain !== "All") bits.push(domain.toLowerCase());
+  if (category !== "All") bits.push(`${category.toLowerCase()} work`);
+
+  if (!bits.length) {
+    return "Production systems across surveillance, logistics, manufacturing, and smart systems";
+  }
+
+  return `Showing ${bits.join(" · ")} — switch filters to tailor this page for different roles.`;
+}
+
 export default function Projects({
   defaultFilter = "All",
   asPage = false,
   featuredOnly = false,
   personalOnly = false,
 }) {
-  const [filter, setFilter] = useState(defaultFilter);
+  const [category, setCategory] = useState(defaultFilter);
+  const [domain, setDomain] = useState("All");
+  const [role, setRole] = useState("All");
 
   const visible = useMemo(() => {
     let list = projects.filter(isListedProject);
     if (featuredOnly) list = list.filter((p) => p.featured);
     if (personalOnly) list = list.filter((p) => p.category === "Personal");
-    if (!featuredOnly && !personalOnly && filter !== "All") {
-      list = list.filter((p) => p.category === filter);
+
+    if (!featuredOnly && !personalOnly) {
+      if (category !== "All") list = list.filter((p) => p.category === category);
+      if (domain !== "All") list = list.filter((p) => (p.domains || []).includes(domain));
+      if (role !== "All") list = list.filter((p) => (p.roles || []).includes(role));
     }
+
     return list;
-  }, [filter, featuredOnly, personalOnly]);
+  }, [category, domain, role, featuredOnly, personalOnly]);
 
   return (
-    <section className="section projects-section" id={personalOnly ? "personal-projects" : "projects"}>
+    <section
+      className={`section projects-section${asPage ? " is-page" : ""}`}
+      id={personalOnly ? "personal-projects" : "projects"}
+    >
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">
-            <Icon name="repo" />{" "}
-            {featuredOnly ? "Featured industry projects" : personalOnly ? "Personal projects" : "All projects"}
-          </span>
-          <h2 className="section-title">
-            {featuredOnly ? "Featured industry projects" : personalOnly ? "Selected personal projects" : "All projects"}
-          </h2>
-          <p className="section-subtitle">
-            {personalOnly
-              ? "Independent ML, healthcare, and analytics work alongside the team case studies"
-              : "Production systems across surveillance, logistics, manufacturing, and smart systems"}
-          </p>
+        <div className="section-header projects-page-header">
+          <div className="projects-page-heading">
+            <span className="section-label">
+              <Icon name="repo" />{" "}
+              {featuredOnly ? "Featured industry projects" : personalOnly ? "Personal projects" : "All projects"}
+            </span>
+            <h2 className="section-title">
+              {featuredOnly
+                ? "Featured industry projects"
+                : personalOnly
+                  ? "Selected personal projects"
+                  : "All projects"}
+            </h2>
+            <p className="section-subtitle">
+              {subtitleFor({ personalOnly, featuredOnly, category, domain, role })}
+            </p>
+          </div>
+          {asPage && (
+            <p className="results-count projects-results-count" aria-live="polite">
+              Showing <strong>{visible.length}</strong>
+            </p>
+          )}
         </div>
 
         {asPage && (
-          <div className="projects-filters" role="group" aria-label="Filter projects by category">
-            {projectCategories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`filter-btn${filter === cat ? " active" : ""}`}
-                aria-pressed={filter === cat}
-                onClick={() => setFilter(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-            <p className="results-count">Showing {visible.length}</p>
+          <div className="projects-filters">
+            <FilterRow label="Type" options={projectCategories} value={category} onChange={setCategory} />
+            <FilterRow label="Domain" options={projectDomains} value={domain} onChange={setDomain} />
+            <FilterRow label="Role" options={projectRoles} value={role} onChange={setRole} />
           </div>
         )}
 
@@ -127,6 +183,10 @@ export default function Projects({
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+
+        {asPage && visible.length === 0 && (
+          <p className="projects-empty">No projects match these filters. Try another domain or role.</p>
+        )}
 
         {!asPage && !personalOnly && (
           <div className="section-cta">

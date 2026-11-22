@@ -16,7 +16,12 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      <div className="neural-bg" aria-hidden="true" />
+      <div className="hero-atmosphere" aria-hidden="true">
+        <div className="hero-grid" />
+        <div className="hero-glow hero-glow-a" />
+        <div className="hero-glow hero-glow-b" />
+      </div>
+
       <div className="container hero-shell">
         <div className="hero-content">
           <span className="hero-badge">{profile.badge}</span>
@@ -76,38 +81,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <aside className="identity-wrap" aria-label="Professional profile card">
-          <div className="identity-lanyard" />
-          <article className="identity-card">
-            <div className="identity-card-top">
-              <img src={profile.photo} alt={profile.name} width="160" height="160" />
-              <span className="identity-online" aria-label="Available" />
-            </div>
-            <div className="identity-card-body">
-              <p className="identity-eyebrow">Verified professional profile</p>
-              <h2>{profile.name}</h2>
-              <p className="identity-role">{profile.cardRole}</p>
-              <dl className="identity-grid">
-                <div>
-                  <dt>Specialty</dt>
-                  <dd>{profile.specialty}</dd>
-                </div>
-                <div>
-                  <dt>Location</dt>
-                  <dd>{profile.cardLocation}</dd>
-                </div>
-                <div>
-                  <dt>Focus</dt>
-                  <dd>Production systems</dd>
-                </div>
-                <div>
-                  <dt>Status</dt>
-                  <dd className="is-available">Available</dd>
-                </div>
-              </dl>
-              <p className="identity-id">{profile.identityId}</p>
-            </div>
-          </article>
+        <aside className="hero-portrait" aria-label="Profile photo">
+          <div className="hero-portrait-frame">
+            <img src={profile.photo} alt={profile.name} width="480" height="600" />
+            <span className="hero-portrait-accent" aria-hidden="true" />
+          </div>
+          <div className="hero-portrait-meta">
+            <p className="hero-portrait-role">{profile.cardRole}</p>
+            <p className="hero-portrait-detail">
+              <span>{profile.specialty}</span>
+              <span aria-hidden="true">·</span>
+              <span>{profile.cardLocation}</span>
+            </p>
+          </div>
         </aside>
       </div>
 
