@@ -1,34 +1,27 @@
 import { useEffect, useState } from "react";
 import {
-  fetchLiveResearchMetrics,
-  publications,
-  researchMetricsFallback,
+  fetchScholarMetricsLive,
+  researchMetrics as cachedMetrics,
   researchProfiles,
 } from "../data/research";
 import Icon from "./Icon";
 
+/** Compact Google Scholar stats for the Research page intro. */
 export default function ResearchMetrics() {
-  const [metrics, setMetrics] = useState(researchMetricsFallback);
+  const [metrics, setMetrics] = useState(cachedMetrics);
   const [status, setStatus] = useState("loading");
 
   useEffect(() => {
     let cancelled = false;
 
     (async () => {
-      try {
-        const live = await fetchLiveResearchMetrics(publications);
-        if (cancelled || !live) {
-          if (!cancelled) setStatus("fallback");
-          return;
-        }
-        setMetrics((prev) => ({
-          ...prev,
-          ...live,
-          researchGateReads: prev.researchGateReads,
-        }));
+      const live = await fetchScholarMetricsLive();
+      if (cancelled) return;
+      if (live) {
+        setMetrics(live);
         setStatus("live");
-      } catch {
-        if (!cancelled) setStatus("fallback");
+      } else {
+        setStatus("cached");
       }
     })();
 
@@ -37,89 +30,59 @@ export default function ResearchMetrics() {
     };
   }, []);
 
-  const tiles = [
+  const stats = [
     {
-      value: metrics.citations,
       label: "Citations",
-      detail: "Crossref · mirrors Scholar trend",
-      href: researchProfiles.scholar.href,
-      icon: "scholar",
+      all: metrics.citations,
+      recent: metrics.citationsSince2021,
     },
     {
-      value: metrics.hIndex,
       label: "h-index",
-      detail: "From listed papers",
-      href: researchProfiles.scholar.href,
-      icon: "trend",
+      all: metrics.hIndex,
+      recent: metrics.hIndexSince2021,
     },
     {
-      value: metrics.i10Index,
       label: "i10-index",
-      detail: "Papers with ≥10 cites",
-      href: researchProfiles.scholar.href,
-      icon: "sparkle",
-    },
-    {
-      value: metrics.publications,
-      label: "Publications",
-      detail: "On this portfolio",
-      href: "#research-list",
-      icon: "book",
-      external: false,
-    },
-    {
-      value: metrics.researchGateReads ?? "RG",
-      label: "ResearchGate",
-      detail: metrics.researchGateReads != null ? "Profile reads" : "Open profile",
-      href: researchProfiles.researchGate.href,
-      icon: "researchgate",
+      all: metrics.i10Index,
+      recent: metrics.i10IndexSince2021,
     },
   ];
 
+  const footnote =
+    status === "live"
+      ? `From Scholar stats · ${metrics.updated}`
+      : status === "loading"
+        ? "Loading Scholar stats…"
+        : `Fallback stats · ${metrics.updated}`;
+
   return (
-    <div className="research-metrics" aria-label="Research metrics">
-      <div className="research-metrics-head">
-        <div>
-          <p className="research-metrics-kicker">Scholar &amp; ResearchGate</p>
-          <p className="research-metrics-note">
-            {status === "live"
-              ? `Live citation refresh · ${metrics.updated}`
-              : status === "loading"
-                ? "Refreshing citation counts…"
-                : `Cached baseline · ${metrics.updated}`}
-          </p>
-        </div>
-        <div className="research-metrics-links">
-          <a href={researchProfiles.scholar.href} target="_blank" rel="noreferrer">
-            <Icon name="scholar" size={16} /> Google Scholar
-          </a>
-          <a href={researchProfiles.researchGate.href} target="_blank" rel="noreferrer">
-            <Icon name="researchgate" size={16} /> ResearchGate
-          </a>
-        </div>
+    <aside className="research-scholar" aria-label="Google Scholar metrics">
+      <div className="research-scholar-top">
+        <span className="research-scholar-brand">
+          <Icon name="scholar" size={16} />
+          Google Scholar
+        </span>
+        <a
+          className="research-scholar-link"
+          href={researchProfiles.scholar.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Profile <Icon name="externalLink" size={13} />
+        </a>
       </div>
 
-      <div className="research-metrics-grid" role="list">
-        {tiles.map((tile) => {
-          const Tag = tile.href ? "a" : "div";
-          const linkProps = tile.href
-            ? tile.external === false
-              ? { href: tile.href }
-              : { href: tile.href, target: "_blank", rel: "noreferrer" }
-            : {};
-
-          return (
-            <Tag className="research-metrics-tile" role="listitem" key={tile.label} {...linkProps}>
-              <span className="research-metrics-icon" aria-hidden="true">
-                <Icon name={tile.icon} size={16} />
-              </span>
-              <p className="research-metrics-value">{tile.value}</p>
-              <p className="research-metrics-label">{tile.label}</p>
-              <p className="research-metrics-detail">{tile.detail}</p>
-            </Tag>
-          );
-        })}
+      <div className="research-scholar-stats" role="list">
+        {stats.map((stat) => (
+          <div className="research-scholar-stat" role="listitem" key={stat.label}>
+            <p className="research-scholar-value">{stat.all}</p>
+            <p className="research-scholar-label">{stat.label}</p>
+            <p className="research-scholar-since">Since 2021 · {stat.recent}</p>
+          </div>
+        ))}
       </div>
-    </div>
+
+      <p className="research-scholar-footnote">{footnote}</p>
+    </aside>
   );
 }

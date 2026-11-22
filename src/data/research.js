@@ -1,28 +1,23 @@
-/** Scholar / ResearchGate profile links and fallback metrics (used until live fetch resolves). */
+/** Google Scholar profile — weekly GitHub Action refreshes public/scholar_stats.json. */
 export const researchProfiles = {
   scholar: {
     label: "Google Scholar",
     href: "https://scholar.google.com/citations?user=PyEMtfkAAAAJ&hl=en",
     userId: "PyEMtfkAAAAJ",
   },
-  researchGate: {
-    label: "ResearchGate",
-    // Update this to your exact ResearchGate profile URL when you have it.
-    href: "https://www.researchgate.net/profile/Md-Hasibur-Rahman",
-  },
 };
 
 /**
- * Fallback metrics shown immediately; live Crossref refresh updates citations / h-index / i10.
- * Edit these when Scholar numbers diverge from Crossref (Scholar often counts more).
+ * Fallback if scholar_stats.json is missing (e.g. offline / first clone).
+ * Prefer values from public/scholar_stats.json (updated by .github/workflows/scholar.yml).
  */
-export const researchMetricsFallback = {
-  citations: 16,
+export const researchMetrics = {
+  citations: 30,
+  citationsSince2021: 30,
   hIndex: 1,
+  hIndexSince2021: 1,
   i10Index: 1,
-  publications: 3,
-  researchGateReads: null,
-  source: "Crossref baseline",
+  i10IndexSince2021: 1,
   updated: "2026-11-22",
 };
 
@@ -38,6 +33,7 @@ export const publications = [
       "Leakage-aware evaluation of dementia classification on OASIS-2 (373 visits, 150 participants) using demographics, education, MMSE, and global MRI measures. Participant-grouped nested folds avoid visit-level leakage across nine modeling procedures. Selected models reach pooled ROC-AUC 0.867; MMSE alone is strong (0.85–0.86), MRI gains are learner-dependent, and XGBoost attributions are dominated by MMSE.",
     url: "https://doi.org/10.21203/rs.3.rs-10967756/v1",
     doi: "10.21203/rs.3.rs-10967756/v1",
+    citedBy: 0,
     bibtex: `@article{rahman2026dementia,
   title={How Reliable and Explainable Are Machine Learning Models for Dementia Detection? A Leakage-Aware Evaluation},
   author={Rahman, Md. Hasibur and Hasan, Md. Jamil and Hossain, Md. Sajjad and Ovi, Md. Sultanul Islam},
@@ -56,6 +52,7 @@ export const publications = [
       "A priority- and Age-of-Information-aware task offloading framework (PRALEIT) for healthcare IoT. The work classifies IoMT tasks with a Bayesian model, combines D2D/local processing with MEC offloading, and formulates a MILP to reduce execution delay and energy while keeping medical services reliable.",
     url: "https://doi.org/10.1109/SMC58881.2025.11343197",
     doi: "10.1109/SMC58881.2025.11343197",
+    citedBy: 1,
     bibtex: `@inproceedings{hasan2025praleit,
   title={Priority-Aware Task Offloading for Latency and Energy Minimization in Healthcare IoT Systems},
   author={Hasan, Md. Jamil and Rahman, Md. Hasibur and Hossain, Md. Sajjad and Roy, Palash and Razzaque, Md. Abdur and Fortino, Giancarlo and Gravina, Raffaele and Hassan, Mohammad Mehedi},
@@ -75,6 +72,7 @@ export const publications = [
       "A custom multi-layered ensemble for phishing-website detection. Feature selection with SelectKBest and RFECV, plus hyperparameter tuning and class balancing, feed stacked classifiers (Random Forest, Gradient Boosting, CatBoost, XGBoost). Evaluated on four public datasets with up to 99.05% accuracy.",
     url: "https://arxiv.org/abs/2409.19825",
     doi: "10.1109/STI64222.2024.10951075",
+    citedBy: 29,
     bibtex: `@inproceedings{ovi2024phishguard,
   title={PhishGuard: A Multi-Layered Ensemble Model for Optimal Phishing Website Detection},
   author={Ovi, Md Sultanul Islam and Rahman, Md. Hasibur and Hossain, Mohammad Arif},
@@ -86,48 +84,34 @@ export const publications = [
   },
 ];
 
-function hIndexFromCounts(counts) {
-  const sorted = [...counts].sort((a, b) => b - a);
-  let h = 0;
-  for (let i = 0; i < sorted.length; i += 1) {
-    if (sorted[i] >= i + 1) h = i + 1;
-    else break;
-  }
-  return h;
-}
+function mapScholarStatsJson(data) {
+  if (!data || typeof data !== "object") return null;
 
-/** Live citation refresh via Crossref (browser-safe CORS). Scholar itself cannot be scraped client-side. */
-export async function fetchLiveResearchMetrics(pubs = publications) {
-  const dois = pubs.map((p) => p.doi).filter(Boolean);
-  if (!dois.length) return null;
-
-  const counts = await Promise.all(
-    dois.map(async (doi) => {
-      try {
-        const res = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`, {
-          headers: { Accept: "application/json" },
-        });
-        if (!res.ok) return 0;
-        const data = await res.json();
-        return Number(data?.message?.["is-referenced-by-count"] ?? 0);
-      } catch {
-        return 0;
-      }
-    })
-  );
-
-  const citations = counts.reduce((sum, n) => sum + n, 0);
-  const hIndex = hIndexFromCounts(counts);
-  const i10Index = counts.filter((n) => n >= 10).length;
+  const citations = Number(data.citations);
+  const hIndex = Number(data.h_index);
+  const i10Index = Number(data.i10_index);
+  if ([citations, hIndex, i10Index].some((n) => Number.isNaN(n))) return null;
 
   return {
     citations,
+    citationsSince2021: Number(data.citations_since_2021 ?? citations),
     hIndex,
+    hIndexSince2021: Number(data.h_index_since_2021 ?? hIndex),
     i10Index,
-    publications: pubs.length,
-    researchGateReads: researchMetricsFallback.researchGateReads,
-    source: "Live via Crossref",
-    updated: new Date().toISOString().slice(0, 10),
-    perPaper: dois.map((doi, i) => ({ doi, citations: counts[i] })),
+    i10IndexSince2021: Number(data.i10_index_since_2021 ?? i10Index),
+    updated: data.updated || new Date().toISOString().slice(0, 10),
+    source: data.source || "scholar_stats.json",
   };
+}
+
+/** Load metrics from public/scholar_stats.json (written by GitHub Actions). */
+export async function fetchScholarMetricsLive() {
+  try {
+    const url = `${import.meta.env.BASE_URL}scholar_stats.json`;
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) return null;
+    return mapScholarStatsJson(await res.json());
+  } catch {
+    return null;
+  }
 }

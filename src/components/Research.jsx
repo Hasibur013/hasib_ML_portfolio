@@ -20,16 +20,35 @@ export default function Research({ asPage = false }) {
   };
 
   return (
-    <section className="section publications" id="research">
+    <section
+      className={`section publications${asPage ? " publications-page" : ""}`}
+      id="research"
+    >
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">
-            <Icon name="book" /> Publications
-          </span>
-          <h2 className="section-title">Research papers</h2>
-          <p className="section-subtitle">Peer-reviewed research and preprints in machine learning and AI</p>
-        </div>
-        {asPage && <ResearchMetrics />}
+        {asPage ? (
+          <div className="research-intro">
+            <div className="research-intro-copy">
+              <span className="section-label">
+                <Icon name="book" /> Publications
+              </span>
+              <h1 className="section-title">Research papers</h1>
+              <p className="section-subtitle">
+                Peer-reviewed research and preprints in machine learning and AI
+              </p>
+            </div>
+            <ResearchMetrics />
+          </div>
+        ) : (
+          <div className="section-header">
+            <span className="section-label">
+              <Icon name="book" /> Publications
+            </span>
+            <h2 className="section-title">Research papers</h2>
+            <p className="section-subtitle">
+              Peer-reviewed research and preprints in machine learning and AI
+            </p>
+          </div>
+        )}
         <div className="publications-list" id="research-list">
           {items.map((pub) => (
             <article className="publication-card" key={pub.id}>
@@ -39,6 +58,12 @@ export default function Research({ asPage = false }) {
               </div>
               <h3 className="publication-title">{pub.title}</h3>
               <p className="publication-authors">{pub.authors}</p>
+              {typeof pub.citedBy === "number" && (
+                <p className="publication-cited-by">
+                  Cited by {pub.citedBy}
+                  {pub.citedBy === 0 ? " · preprint" : ""}
+                </p>
+              )}
               <p className="publication-abstract">{pub.abstract}</p>
               <div className="publication-actions">
                 <a className="publication-btn" href={pub.url} target="_blank" rel="noreferrer">

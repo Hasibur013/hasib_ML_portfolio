@@ -15,7 +15,6 @@ export const profile = {
   github: "https://github.com/Hasibur013",
   linkedin: "https://www.linkedin.com/in/md-hasibur-rahman-2286321b9/",
   scholar: "https://scholar.google.com/citations?user=PyEMtfkAAAAJ&hl=en",
-  researchGate: "https://www.researchgate.net/profile/Md-Hasibur-Rahman",
   kaggle: "https://www.kaggle.com/hasibur013",
   leetcode: "https://leetcode.com/u/Hasibur013/",
   website: "https://hasibur013.github.io/",
@@ -585,12 +584,6 @@ export const socials = [
     label: "Google Scholar",
     detail: "Citations",
   },
-  {
-    href: "https://www.researchgate.net/profile/Md-Hasibur-Rahman",
-    icon: "researchgate",
-    label: "ResearchGate",
-    detail: "Profile",
-  },
   { href: "https://github.com/Hasibur013", icon: "github", label: "GitHub", detail: "@Hasibur013" },
   { href: "https://leetcode.com/u/Hasibur013/", icon: "leetcode", label: "LeetCode", detail: "Hasibur013" },
   { href: "mailto:mlengr.hasibur@gmail.com", icon: "mail", label: "Email", detail: "mlengr.hasibur@gmail.com" },
@@ -599,5 +592,5 @@ export const socials = [
 ];
 
 export const profileSocials = socials.filter((item) =>
-  ["linkedin", "kaggle", "scholar", "researchgate", "github", "leetcode"].includes(item.icon)
+  ["linkedin", "kaggle", "scholar", "github", "leetcode"].includes(item.icon)
 );
