@@ -6,10 +6,6 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-role-banner">
-          <span>Current role</span>
-          <strong>{profile.cardRole}</strong>
-        </div>
         <div className="footer-brand">
           <div className="footer-logo">
             <span className="footer-mark" aria-hidden="true">

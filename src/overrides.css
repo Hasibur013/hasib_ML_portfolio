@@ -676,10 +676,6 @@ main#main-content > .section:first-child > .container,
   box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
 }
 
-[data-theme="light"] .footer-role-banner strong {
-  -webkit-text-fill-color: transparent;
-}
-
 [data-theme="light"] .project-summary-card .project-workflow-preview,
 [data-theme="light"] .project-workflow-hero {
   background: #e8edf6;
