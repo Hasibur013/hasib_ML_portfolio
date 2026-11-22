@@ -10,5 +10,6 @@
     "2026": 14
   },
   "updated": "2026-11-22",
-  "source": "manual-seed"
+  "source": "serpapi+google_scholar_author",
+  "scholar_id": "PyEMtfkAAAAJ"
 }
