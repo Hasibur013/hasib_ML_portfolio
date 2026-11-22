@@ -12,7 +12,7 @@ export default function Home() {
   useSeo({
     title: "",
     description:
-      "Junior Machine Learning Engineer building computer vision, OCR, and applied AI systems, with peer-reviewed work in healthcare IoT and phishing detection.",
+      "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, and AI automation / VLM systems, with peer-reviewed work in healthcare IoT and phishing detection.",
     path: "/",
   });
 

@@ -5,7 +5,7 @@ export default function useSeo({ title, description, path = "/" }) {
   useEffect(() => {
     const fullTitle = title
       ? `${title} | ${profile.name}`
-      : `${profile.name} | Machine Learning Engineer`;
+      : `${profile.name} | AI/ML Engineer`;
     document.title = fullTitle;
 
     const desc = description || profile.seoDescription;

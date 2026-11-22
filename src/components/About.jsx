@@ -21,16 +21,14 @@ export function AboutCompact() {
             <span className="section-label">
               <Icon name="user" /> About
             </span>
-            <h2 className="section-title">ML engineer building computer vision that holds up in the real world</h2>
+            <h2 className="section-title">AI/ML engineer building vision, OCR, and automation that holds up in production</h2>
             <p>
-              I am Md. Hasibur Rahman, a Junior Machine Learning Engineer at Bondstein Technologies. I care
-              about the full path of a vision system: clean data, a model that generalizes, and a service that
-              operators can trust.
+              I am Md. Hasibur Rahman, an AI/ML Engineer at Bondstein Technologies. I care about the full path
+              of a system: clean data, a model that generalizes, and a service operators can trust.
             </p>
             <p>
-              My work sits in computer vision, OCR, and applied AI—from Roboflow annotation and Bangla
-              PaddleOCR fine-tuning to detection, segmentation, and image/video pipelines on industrial
-              deployments.
+              My focus is computer vision, OCR, face recognition, and Edge AI—with growing work in AI
+              automation, agents, and VLM-assisted verification across industrial and security deployments.
             </p>
             <div className="about-compact-actions">
               <Link to="/about" className="btn btn-primary">
@@ -56,8 +54,8 @@ export default function About() {
             <p className="about-role">{profile.cardRole}</p>
             <p className="about-specialty">{profile.specialty}</p>
             <p className="about-identity-summary">
-              Dedicated ML engineer. Deep learning, data annotation, and model optimization—with a bias toward
-              systems that can scale beyond a notebook.
+              AI/ML engineer focused on CV, OCR, FRS, and Edge AI—plus automation and VLM workflows that scale
+              beyond a notebook.
             </p>
             <ul className="about-identity-facts">
               <li>
@@ -75,17 +73,17 @@ export default function About() {
             </span>
             <h2 className="section-title">I turn messy visual data into models and services people can use.</h2>
             <p>
-              I am a Junior Machine Learning Engineer in Bondstein’s R&D team in Tejgaon. I joined as an ML
-              intern, moved into data annotation, and now work as a junior engineer on computer vision: object
-              detection, segmentation, OCR, and image/video processing. A large part of that path was
-              Roboflow labeling and PaddleOCR research, including Bangla fine-tuning that feeds ANPR and
-              industrial OCR.
+              I work as an AI/ML Engineer in Bondstein’s R&D team in Tejgaon. I joined as an ML intern, moved
+              into data annotation, and now ship computer vision systems: object detection, segmentation, OCR,
+              face recognition, and image/video pipelines. A large part of that path was Roboflow labeling and
+              PaddleOCR research, including Bangla fine-tuning that feeds ANPR and industrial OCR.
             </p>
             <p>
               In parallel I interned remotely as an AI engineer at ROHUM (Turkey), building FastAPI services,
-              LLM agents, and a deployment on Azure. I completed a BSc in CSE at Green University of Bangladesh
-              (CGPA 3.95/4.00), taught C as a teaching assistant, and still keep personal projects in
-              classification, healthcare apps, and analytics.
+              LLM agents, and Azure deployments—experience that carries into AI automation and VLM-assisted
+              workflows. I completed a BSc in CSE at Green University of Bangladesh (CGPA 3.95/4.00), taught C
+              as a teaching assistant, and still keep personal projects in classification, healthcare apps, and
+              analytics.
             </p>
             <p>
               I publish when the work is solid enough to defend. PRALEIT (IEEE SMC 2025, Vienna) studies

@@ -7,7 +7,7 @@ export default function Highlights() {
         <div className="section-header">
           <span className="section-label">How I work</span>
           <h2 className="section-title">Focus areas</h2>
-          <p className="section-subtitle">Computer vision, OCR, and applied AI across industry and research</p>
+          <p className="section-subtitle">Computer vision, OCR, FRS, Edge AI, and automation across industry and research</p>
         </div>
 
         <div className="skills-container">

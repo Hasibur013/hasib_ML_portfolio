@@ -10,7 +10,7 @@ export default function AboutPage() {
   useSeo({
     title: "About",
     description:
-      "Junior Machine Learning Engineer at Bondstein working on computer vision, OCR, and applied AI, with research in healthcare IoT and phishing detection.",
+      "AI/ML Engineer at Bondstein specializing in computer vision, OCR, face recognition, Edge AI, and AI automation / VLM systems, with research in healthcare IoT and phishing detection.",
     path: "/about",
   });
 

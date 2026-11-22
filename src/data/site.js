@@ -2,10 +2,10 @@ export const profile = {
   name: "Md. Hasibur Rahman",
   shortName: "Hasibur Rahman",
   initials: "HR",
-  tagline: "ML Engineer · Computer Vision & Edge AI",
-  role: "Junior Machine Learning Engineer — Computer Vision & Edge AI",
-  cardRole: "Jr. Machine Learning Engineer",
-  specialty: "CV · OCR · Edge AI",
+  tagline: "AI/ML Engineer · CV, OCR, Edge AI & Automation",
+  role: "AI/ML Engineer — Computer Vision, OCR, Face Recognition & Edge AI",
+  cardRole: "AI/ML Engineer",
+  specialty: "CV · OCR · FRS · Edge AI",
   location: "Gazipur, Dhaka, Bangladesh",
   cardLocation: "Gazipur, Bangladesh",
   email: "mlengr.hasibur@gmail.com",
@@ -21,18 +21,18 @@ export const profile = {
   identityId: "HR · ML · 2026",
   photo: "/assets/images/profile.png",
   heroRoles: [
-    "Computer Vision Engineer",
-    "OCR & Annotation Specialist",
-    "Applied ML Engineer",
-    "AI Systems Builder",
+    "Computer Vision & Edge AI Specialist",
+    "OCR & Face Recognition Engineer",
+    "AI Automation & VLM Systems",
+    "Applied AI/ML Engineer",
   ],
   subtitle:
-    "I am a Junior Machine Learning Engineer focused on computer vision, OCR, and applied AI. I work through the full path from data annotation and model training to APIs and deployment, and I publish research in healthcare IoT and security.",
-  badge: "Available for AI/ML & Computer Vision opportunities",
+    "AI/ML Engineer specializing in computer vision, OCR, face recognition, and Edge AI — with growing work in AI automation, voice agents, and VLM-assisted pipelines from data to deployment.",
+  badge: "Available for AI/ML, Computer Vision & Automation roles",
   footerBlurb:
-    "Junior Machine Learning Engineer building computer vision, OCR, and applied AI systems. Open to collaborations and opportunities.",
+    "AI/ML Engineer building computer vision, OCR, face recognition, Edge AI, and automation systems. Open to collaborations and opportunities.",
   seoDescription:
-    "Junior Machine Learning Engineer specializing in computer vision, OCR, data annotation, and applied AI, with peer-reviewed research in healthcare IoT and phishing detection.",
+    "AI/ML Engineer specializing in computer vision, OCR, face recognition, Edge AI, and AI automation / VLM systems, with peer-reviewed research in healthcare IoT and phishing detection.",
 };
 
 export const navLinks = [
@@ -58,7 +58,9 @@ export const techStack = [
   "OpenCV",
   "PaddleOCR",
   "YOLO",
+  "InsightFace",
   "FastAPI",
+  "Ollama / VLM",
   "Roboflow",
   "MLflow",
 ];
@@ -66,23 +68,23 @@ export const techStack = [
 export const heroFocus = [
   {
     title: "Computer Vision Systems",
-    text: "Detection, tracking, OCR, ANPR, face recognition, pose analysis, and multi-camera video analytics.",
+    text: "Detection, tracking, OCR, ANPR, pose analysis, and multi-camera video analytics for production floors and security.",
+  },
+  {
+    title: "OCR, FRS & Edge AI",
+    text: "Bangla/industrial OCR, face recognition identity review, and Jetson / TensorRT edge deployment.",
+  },
+  {
+    title: "AI Automation & Agents",
+    text: "API-first services, RAG/agent workflows, and VLM verification for policy, HR, and safety use cases.",
   },
   {
     title: "Model Engineering",
     text: "Dataset curation, annotation, training, evaluation, and reproducible experimentation with PyTorch and PaddleOCR.",
   },
   {
-    title: "OCR & Annotation",
-    text: "Roboflow labeling workflows and PaddleOCR fine-tuning for Bangla and industrial text recognition.",
-  },
-  {
-    title: "MLOps & Data Engineering",
-    text: "Annotation pipelines, experiment tracking with MLflow, validation, and delivery of trained models.",
-  },
-  {
     title: "Systems Engineering",
-    text: "FastAPI services, LLM agents, Azure VM deployment, and API-integrated production workflows.",
+    text: "FastAPI services, LLM/VLM agents, Azure VM deployment, and API-integrated production workflows.",
   },
   {
     title: "Research & Evaluation",
