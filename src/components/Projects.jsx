@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   isListedProject,
@@ -8,6 +8,8 @@ import {
   projects,
 } from "../data/projects";
 import Icon from "./Icon";
+
+const PAGE_SIZE = 4;
 
 const TYPE_ICONS = {
   All: "repo",
@@ -149,6 +151,52 @@ function subtitleFor({ personalOnly, featuredOnly, category, domain, role, count
   return `Showing ${count} projects · ${bits.join(" · ")}`;
 }
 
+function ProjectsPagination({ page, totalPages, onChange }) {
+  if (totalPages <= 1) return null;
+
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  return (
+    <nav className="projects-pagination" aria-label="Projects pages">
+      <button
+        type="button"
+        className="projects-page-btn"
+        disabled={page <= 1}
+        onClick={() => onChange(page - 1)}
+        aria-label="Previous page"
+      >
+        <Icon name="arrowLeft" size={16} />
+        Prev
+      </button>
+
+      <div className="projects-page-numbers">
+        {pages.map((n) => (
+          <button
+            key={n}
+            type="button"
+            className={`projects-page-num${page === n ? " is-active" : ""}`}
+            aria-current={page === n ? "page" : undefined}
+            onClick={() => onChange(n)}
+          >
+            {n}
+          </button>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        className="projects-page-btn"
+        disabled={page >= totalPages}
+        onClick={() => onChange(page + 1)}
+        aria-label="Next page"
+      >
+        Next
+        <Icon name="arrowRight" size={16} />
+      </button>
+    </nav>
+  );
+}
+
 export default function Projects({
   defaultFilter = "All",
   asPage = false,
@@ -158,6 +206,7 @@ export default function Projects({
   const [category, setCategory] = useState(defaultFilter);
   const [domain, setDomain] = useState("All");
   const [role, setRole] = useState("All");
+  const [page, setPage] = useState(1);
 
   const visible = useMemo(() => {
     let list = projects.filter(isListedProject);
@@ -172,6 +221,24 @@ export default function Projects({
 
     return list;
   }, [category, domain, role, featuredOnly, personalOnly]);
+
+  const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paged = useMemo(() => {
+    if (!asPage) return visible;
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return visible.slice(start, start + PAGE_SIZE);
+  }, [asPage, visible, currentPage]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [category, domain, role]);
+
+  const changePage = (next) => {
+    const clamped = Math.min(Math.max(1, next), totalPages);
+    setPage(clamped);
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section
@@ -243,14 +310,21 @@ export default function Projects({
               role,
               count: visible.length,
             })}
+            {visible.length > PAGE_SIZE
+              ? ` · Page ${currentPage} of ${totalPages}`
+              : ""}
           </p>
         )}
 
         <div className="projects-list projects-card-grid">
-          {visible.map((project) => (
+          {paged.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+
+        {asPage && (
+          <ProjectsPagination page={currentPage} totalPages={totalPages} onChange={changePage} />
+        )}
 
         {asPage && visible.length === 0 && (
           <p className="projects-empty">No projects match these filters. Try another role or domain.</p>
