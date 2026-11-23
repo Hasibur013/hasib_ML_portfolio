@@ -63,6 +63,7 @@ export default function ProjectDetail() {
 
   const wide = project.companyLogoStyle === "wide" || /brac-bank|kdsll|bondstein|runner-motorcycles|bat_bangladesh/i.test(project.companyLogo || "");
   const ultra = /brac-bank-plc/i.test(project.companyLogo || "");
+  const darkLogo = /bondstein/i.test(project.companyLogo || "");
   const metrics = Object.fromEntries(Object.entries(project.metrics || {}).filter(keepMetric));
   const demo = project.demoLink || project.demo;
 
@@ -83,7 +84,9 @@ export default function ProjectDetail() {
 
       <div className="project-detail-hero">
         {project.companyLogo && (
-          <div className={`project-detail-logo-wrap${wide ? " is-wide" : ""}${ultra ? " is-ultrawide" : ""}`}>
+          <div
+            className={`project-detail-logo-wrap${wide ? " is-wide" : ""}${ultra ? " is-ultrawide" : ""}${darkLogo ? " is-on-dark" : ""}`}
+          >
             <img
               src={project.companyLogo}
               alt=""

@@ -42,9 +42,14 @@ function isUltraWide(project) {
   return /brac-bank-plc/i.test(project.companyLogo || "");
 }
 
+function isDarkLogo(project) {
+  return /bondstein/i.test(project.companyLogo || "");
+}
+
 function ProjectCard({ project }) {
   const wide = isWideLogo(project);
   const ultra = isUltraWide(project);
+  const darkLogo = isDarkLogo(project);
   const badges = (project.stack || []).slice(0, 4);
   const extra = (project.stack || []).length - badges.length;
 
@@ -68,7 +73,9 @@ function ProjectCard({ project }) {
         </div>
         <h3 className="project-summary-heading">
           {project.companyLogo && (
-            <span className={`project-summary-logo-wrap${wide ? " is-wide" : ""}${ultra ? " is-ultrawide" : ""}`}>
+            <span
+              className={`project-summary-logo-wrap${wide ? " is-wide" : ""}${ultra ? " is-ultrawide" : ""}${darkLogo ? " is-on-dark" : ""}`}
+            >
               <img
                 src={project.companyLogo}
                 alt=""
