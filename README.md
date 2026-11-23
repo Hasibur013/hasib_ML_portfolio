@@ -2,7 +2,7 @@
 
 Source for the recruiter-focused portfolio covering production computer vision, OCR, Edge AI, and applied ML research.
 
-Live site (after GitHub Pages is enabled): https://hasibur013.github.io/hasib_ML_portfolio/
+Live site: https://hasibur013.github.io/
 
 Modeled on the same case-study layout as [rafiul_ML_portfolio](https://github.com/rafi0020/rafiul_ML_portfolio).
 
@@ -23,8 +23,8 @@ Modeled on the same case-study layout as [rafiul_ML_portfolio](https://github.co
 ## Local development
 
 ```bash
-git clone https://github.com/Hasibur013/hasib_ML_portfolio.git
-cd hasib_ML_portfolio
+git clone https://github.com/Hasibur013/hasibur013.github.io.git
+cd hasibur013.github.io
 npm install
 npm run dev
 ```

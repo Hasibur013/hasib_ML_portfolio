@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const pagesBase = process.env.GITHUB_PAGES === "true" ? "/hasib_ML_portfolio/" : "/";
-
+// User site: https://hasibur013.github.io/ (repo hasibur013.github.io)
 export default defineConfig({
-  base: pagesBase,
+  base: "/",
   plugins: [react()],
   server: {
     port: 5173,
